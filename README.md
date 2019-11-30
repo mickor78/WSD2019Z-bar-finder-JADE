@@ -1,1 +1,1 @@
-# WSD2019Z-distributed-beer-problem
+# WSD2019Z-bar-finder-problem
