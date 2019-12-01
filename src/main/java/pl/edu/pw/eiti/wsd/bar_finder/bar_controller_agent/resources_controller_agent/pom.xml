@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>distributed-beer-problem</artifactId>
-        <groupId>pl.edu.pw.eiti.WSD.Zespol20</groupId>
+        <artifactId>bar-finder</artifactId>
+        <groupId>pl.edu.pw.eiti.WSD.bar-finder</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wsd-dbp-agent-client</artifactId>
+    <artifactId>resources-controller-agent</artifactId>
 
     <build>
         <plugins>
@@ -50,8 +50,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.edu.pw.eiti.WSD.Zespol20</groupId>
-            <artifactId>wsd-dbp-commons</artifactId>
+            <groupId>pl.edu.pw.eiti.WSD.bar-finder</groupId>
+            <artifactId>commons</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

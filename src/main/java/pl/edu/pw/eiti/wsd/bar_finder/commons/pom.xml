@@ -3,13 +3,13 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>distributed-beer-problem</artifactId>
-        <groupId>pl.edu.pw.eiti.WSD.Zespol20</groupId>
+        <artifactId>bar-finder</artifactId>
+        <groupId>pl.edu.pw.eiti.WSD.bar-finder</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wsd-dbp-commons</artifactId>
+    <artifactId>commons</artifactId>
 
 
     <build>
