@@ -1,4 +1,4 @@
-# WSD2019Z-distributed-beer-problem
+# WSD2019Z-beer-finder-problem
 
 ##Documentation
 _limited access_
