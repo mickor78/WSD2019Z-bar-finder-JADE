@@ -4,15 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.edu.pw.eiti.WSD.Zespol20</groupId>
-    <artifactId>distributed-beer-problem</artifactId>
+    <groupId>pl.edu.pw.eiti.wsd.bar_finder</groupId>
+    <artifactId>bar-finder</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>wsd-dbp-commons</module>
-        <module>wsd-dbp-agent-bar</module>
-        <module>wsd-dbp-agent-client</module>
-        <module>wsd-dbp-agent-resources-controller</module>
     </modules>
 
     <repositories>
@@ -28,6 +24,11 @@
             <groupId>com.tilab.jade</groupId>
             <artifactId>jade</artifactId>
             <version>4.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
         </dependency>
     </dependencies>
 
