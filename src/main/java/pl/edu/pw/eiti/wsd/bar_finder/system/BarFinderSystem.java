@@ -15,6 +15,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData;
 
+import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
+
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.JsonUtils.GetBars;
 
 public class BarFinderSystem
@@ -62,10 +64,21 @@ public class BarFinderSystem
                 AgentContainer barContainer = runtime.createAgentContainer(barContainerProfile);
                 // Create rma agent that is responsible for gui
                 AgentController ag = barContainer.createNewAgent("bar-" + bar.getName(),
-                        "pl.edu.pw.eiti.wsd.bar_finder.bar_agent.BarAgent",
+                        BAR_AGENT_CLASS_PATH,
                         new Object[]{}); // Arguments
                 ag.start();
             }
+
+            // Test customer
+            Profile customerProfile = new ProfileImpl();
+            customerProfile.setParameter(Profile.MAIN_HOST, "localhost");
+            customerProfile.setParameter(Profile.CONTAINER_NAME, "Customer-container");
+            AgentContainer customerContainer = runtime.createAgentContainer(customerProfile);
+            AgentController ag = customerContainer.createNewAgent("customer",
+                        CUSTOMER_AGENT_CLASS_PATH,
+                        new Object[] {}); // Arguments
+            ag.start();
+
         }
         catch (StaleProxyException e) {
             e.printStackTrace();
