@@ -4,6 +4,7 @@ import java.util.List;
 
 public class BarData {
 
+    public final static String BARS_KEY = "bars";
     public final static String BAR_NAME_KEY = "name";
     public final static String BAR_LOCALIZATION_KEY = "localization";
     public final static String BAR_BEERS_KEY = "beers";

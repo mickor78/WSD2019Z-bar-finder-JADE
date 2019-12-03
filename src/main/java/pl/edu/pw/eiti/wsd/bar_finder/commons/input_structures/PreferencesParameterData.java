@@ -2,6 +2,10 @@ package pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures;
 
 public class PreferencesParameterData {
 
+    public final static String PREF_PARAM_NAME_KEY = "name";
+    public final static String PREF_PARAM_VAL_KEY = "value";
+    public final static String PREF_PARAM_IMPORTANCE_KEY = "importance";
+
     private String name;
     private Object value;
     private double importance;
