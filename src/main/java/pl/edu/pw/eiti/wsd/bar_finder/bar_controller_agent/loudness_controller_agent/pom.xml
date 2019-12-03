@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bar-finder</artifactId>
+        <groupId>pl.edu.pw.eiti.WSD.bar-finder</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.edu.pw.eiti.wsd.bar_finder</groupId>
-    <artifactId>bar-finder</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-    </modules>
-
-    <repositories>
-        <repository>
-            <id>tilab</id>
-            <url>https://jade.tilab.com/maven/</url>
-        </repository>
-    </repositories>
+    <artifactId>loudness-controller-agent</artifactId>
 
     <build>
         <plugins>
@@ -55,17 +48,11 @@
         </plugins>
     </build>
 
-
     <dependencies>
         <dependency>
-            <groupId>com.tilab.jade</groupId>
-            <artifactId>jade</artifactId>
-            <version>4.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <groupId>pl.edu.pw.eiti.WSD.bar-finder</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
