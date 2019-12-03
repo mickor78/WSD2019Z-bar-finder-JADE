@@ -9,7 +9,7 @@
 		"importance": 0.80
 	  },
 	  {
-		"name": "style",
+		"name": "beer_style",
 		"value": "AMERICAN_PALE_ALE",
 		"importance": 0.40
 	  }
@@ -24,7 +24,7 @@
 		"importance": 0.90
 	  },
 	  {
-		"name": "price",
+		"name": "beer_price",
 		"value": 15.0,
 		"importance": 0.80
 	  }

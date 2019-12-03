@@ -4,8 +4,8 @@ public final class ParametersNames {
 
     public static final String LOCALIZATION_PARAM_NAME = "localization";
     public static final String BEER_PARAM_NAME =  "beer";
-    public static final String BEER_STYLE_PARAM_NAME = "beer style";
-    public static final String BEER_PRICE_PARAM_NAME = "beer price";
-    public static final String BAR_LOUDNESS_LEVEL_PARAM_NAME = "bar loudness level";
-    public static final String BAR_FREE_SEATS_PARAM_NAME = "bar free seats";
+    public static final String BEER_STYLE_PARAM_NAME = "beer_style";
+    public static final String BEER_PRICE_PARAM_NAME = "beer_price";
+    public static final String BAR_LOUDNESS_LEVEL_PARAM_NAME = "bar_loudness_level";
+    public static final String BAR_FREE_SEATS_PARAM_NAME = "bar_free_seats";
 }
