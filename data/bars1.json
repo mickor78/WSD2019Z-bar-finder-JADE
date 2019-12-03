@@ -1,0 +1,55 @@
+{
+	"bars": [
+	{
+	  "name": "Jabberwocky",
+	  "localization": "Nowogrodzka 12, Warszawa",
+	  "beers": [
+		{
+		  "name": "Aparat",
+		  "brewery": "Jabberwocky",
+		  "style": "AMERICAN_PALE_ALE",
+		  "price": 14.0,
+		  "quantity": 50.5
+		},
+		{
+		  "name": "Miękkie lądowanie",
+		  "brewery": "Nook",
+		  "style": "GERMAN_PILSNER",
+		  "price": 16.0,
+		  "quantity": 30.5
+		},
+		{
+		  "name": "Slow & Trve",
+		  "brewery": "Zagovor Brewery",
+		  "style": "ENGLISH_IPA",
+		  "price": 30.0,
+		  "quantity": 10.0
+		}
+	  ],
+	  "loudness_controller": true,
+	  "seats_controller": true
+	},
+	{
+	  "name": "Kufle i kapsle",
+	  "localization": "Popiełuszki 19/21, Warszawa",
+	  "beers": [
+		{
+		  "name": "Ogrodnik",
+		  "brewery": "Profesja",
+		  "style": "SAISON",
+		  "price": 15.0,
+		  "quantity": 10.5
+		},
+		{
+		  "name": "Bard",
+		  "brewery": "Profesja",
+		  "style": "AMERICAN_PALE_ALE",
+		  "price": 14.0,
+		  "quantity": 36.5
+		}
+	  ],
+	  "loudness_controller": true,
+	  "seats_controller": true
+	}
+	]
+}

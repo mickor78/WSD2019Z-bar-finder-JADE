@@ -68,11 +68,12 @@ public final class JsonUtils {
             return null;
 
         String name = (String)data.get(BEER_NAME_KEY);
+        String breweryName = (String)data.get(BEER_BREWERY_NAME_KEY);
         String style = (String)data.get(BEER_STYLE_KEY);
         double price = (Double)data.get(BEER_PRICE_KEY);
         double quantity = (Double)data.get(BEER_QUANTITY_KEY);
 
-        return new BarBeerData(name, style, price, quantity);
+        return new BarBeerData(name, breweryName, style, price, quantity);
     }
 
     public static PreferencesData GetPreferences(JSONArray data)
