@@ -5,7 +5,12 @@ import java.util.List;
 
 public class PreferencesData {
 
+    public final static String CUSTOMERS_PREFERENCES_KEY = "customers_preferences";
+    public final static String PREFERENCES_KEY = "preferences";
+    public final static String CUSTOMER_KEY = "customer";
+
     private List<PreferencesParameterData> preferences;
+    private String customer;
 
     public List<PreferencesParameterData> getPreferences() {
         return preferences;
@@ -14,13 +19,22 @@ public class PreferencesData {
         this.preferences = preferences;
     }
 
-    public PreferencesData()
-    {
-        preferences = new LinkedList<PreferencesParameterData>();
+    public String getCustomer() {
+        return customer;
+    }
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
-    public PreferencesData(List<PreferencesParameterData> preferences)
+    public PreferencesData(String customer)
     {
+        setCustomer(customer);
+        preferences = new LinkedList<>();
+    }
+
+    public PreferencesData(String customer, List<PreferencesParameterData> preferences)
+    {
+        setCustomer(customer);
         setPreferences(preferences);
     }
 }

@@ -13,12 +13,15 @@ import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesParamet
 
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarBeerData.*;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData.*;
+import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData.CUSTOMER_KEY;
+import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData.PREFERENCES_KEY;
+import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesParameterData.*;
 
 public final class JsonUtils {
 
     public static List<BarData> GetBars(JSONArray data)
     {
-        List<BarData> result = new LinkedList<BarData>();
+        List<BarData> result = new LinkedList<>();
 
         if (data != null && !data.isEmpty())
         {
@@ -43,12 +46,15 @@ public final class JsonUtils {
         boolean isLoudnessController = (Boolean)data.get(BAR_IS_LOUDNESS_CONTROLLER_KEY);
         boolean isSeatsController = (Boolean)data.get(BAR_IS_SEATS_CONTROLLER_KEY);
 
-        return new BarData(name, localization, beers, isLoudnessController, isSeatsController);
+        if (name != null && !name.isEmpty())
+            return new BarData(name, localization, beers, isLoudnessController, isSeatsController);
+
+        return null;
     }
 
     public static List<BarBeerData> GetBeers(JSONArray data)
     {
-        List<BarBeerData> result = new LinkedList<BarBeerData>();
+        List<BarBeerData> result = new LinkedList<>();
 
         if (data != null && !data.isEmpty())
         {
@@ -73,16 +79,65 @@ public final class JsonUtils {
         double price = (Double)data.get(BEER_PRICE_KEY);
         double quantity = (Double)data.get(BEER_QUANTITY_KEY);
 
-        return new BarBeerData(name, breweryName, style, price, quantity);
-    }
+        if (name != null && !name.isEmpty())
+            return new BarBeerData(name, breweryName, style, price, quantity);
 
-    public static PreferencesData GetPreferences(JSONArray data)
-    {
         return null;
     }
 
-    public static PreferencesParameterData GetPreferecesParameter(JSONObject data)
+    public static List<PreferencesData> GetCustomersPreferences(JSONArray data)
     {
+        List<PreferencesData> result = new LinkedList<>();
+
+        if (data != null && !data.isEmpty())
+        {
+            data.forEach(obj -> {
+                PreferencesData preferences = GetPreferences((JSONObject)obj);
+                if (preferences != null)
+                    result.add(preferences);
+            });
+        }
+
+        return result;
+    }
+
+    public static PreferencesData GetPreferences(JSONObject data)
+    {
+        if (data == null || data.isEmpty())
+            return null;
+
+        String customer = (String)data.get(CUSTOMER_KEY);
+        JSONArray customerPreferencesJSONArray = (JSONArray)data.get(PREFERENCES_KEY);
+
+        if (customer == null || customer.isEmpty() || customerPreferencesJSONArray == null || customerPreferencesJSONArray.isEmpty())
+            return null;
+
+        PreferencesData result = new PreferencesData(customer);
+
+        customerPreferencesJSONArray.forEach(obj -> {
+            PreferencesParameterData preferencesParameter = GetPreferencesParameter((JSONObject)obj);
+            if (preferencesParameter != null)
+                result.getPreferences().add(preferencesParameter);
+        });
+
+        if (result.getPreferences().isEmpty())
+            return null;
+
+        return result;
+    }
+
+    public static PreferencesParameterData GetPreferencesParameter(JSONObject data)
+    {
+        if (data == null || data.isEmpty())
+            return null;
+
+        String name = (String)data.get(PREF_PARAM_NAME_KEY);
+        Object val = data.get(PREF_PARAM_VAL_KEY);
+        double importance = (Double)data.get(PREF_PARAM_IMPORTANCE_KEY);
+
+        if (name != null && !name.isEmpty())
+            return new PreferencesParameterData(name, val, importance);
+
         return null;
     }
 }

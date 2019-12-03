@@ -6,10 +6,19 @@ import java.util.Hashtable;
 
 public class Preferences extends Dictionary<String, PreferencesParameter> {
 
+    private String customer;
     private Dictionary<String, PreferencesParameter> preferencesDict;
 
-    public Preferences()
+    public String getCustomer() {
+        return customer;
+    }
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public Preferences(String customer)
     {
+        setCustomer(customer);
         preferencesDict = new Hashtable<>();
     }
 
