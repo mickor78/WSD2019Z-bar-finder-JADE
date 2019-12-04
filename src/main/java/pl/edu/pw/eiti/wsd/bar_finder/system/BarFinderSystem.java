@@ -84,20 +84,36 @@ public class BarFinderSystem
                         BAR_AGENT_CLASS_PATH,
                         new Object[]{}); // Arguments
                 ag.start();
+
+                AgentController lc = barContainer.createNewAgent("bar_" + bar.getName() + "_loudness_controller_agent",
+                        LOUDNESS_CONTROLLER_AGENT_CLASS_PATH,
+                        new Object[]{}); // Arguments
+                lc.start();
+
+                AgentController sc = barContainer.createNewAgent("bar_" + bar.getName() + "_seats_controller_agent",
+                        SEATS_CONTROLLER_AGENT_CLASS_PATH,
+                        new Object[]{}); // Arguments
+                sc.start();
+
+                AgentController rc = barContainer.createNewAgent("bar_" + bar.getName() + "_resources_controller_agent",
+                        RESOURCES_CONTROLLER_AGENT_CLASS_PATH,
+                        new Object[]{}); // Arguments
+                rc.start();
+
             }
 
-            // Create profile for customer container
-            Profile customerContainerProfile = new ProfileImpl();
-            customerContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
-            customerContainerProfile.setParameter(Profile.CONTAINER_NAME, "Customers_container");
-            AgentContainer customerContainer = runtime.createAgentContainer(customerContainerProfile);
-            // Start customers agents
-            for (PreferencesData preferencesData : preferences) {
-                AgentController ag = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
-                        CUSTOMER_AGENT_CLASS_PATH,
-                        new Object[]{}); // Arguments
-                ag.start();
-            }
+//            // Create profile for customer container
+//            Profile customerContainerProfile = new ProfileImpl();
+//            customerContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
+//            customerContainerProfile.setParameter(Profile.CONTAINER_NAME, "Customers_container");
+//            AgentContainer customerContainer = runtime.createAgentContainer(customerContainerProfile);
+//            // Start customers agents
+//            for (PreferencesData preferencesData : preferences) {
+//                AgentController ag = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
+//                        CUSTOMER_AGENT_CLASS_PATH,
+//                        new Object[]{}); // Arguments
+//                ag.start();
+//            }
         }
         catch (StaleProxyException e) {
             e.printStackTrace();
