@@ -43,11 +43,12 @@ public final class JsonUtils {
         String name = (String)data.get(BAR_NAME_KEY);
         String localization = (String)data.get(BAR_LOCALIZATION_KEY);
         List<BarBeerData> beers = GetBeers((JSONArray)data.get(BAR_BEERS_KEY));
+        Integer seatsNumber = ((Long)data.get(BAR_SEATS_NUMBER_KEY)).intValue();
         boolean isLoudnessController = (Boolean)data.get(BAR_IS_LOUDNESS_CONTROLLER_KEY);
         boolean isSeatsController = (Boolean)data.get(BAR_IS_SEATS_CONTROLLER_KEY);
 
         if (name != null && !name.isEmpty())
-            return new BarData(name, localization, beers, isLoudnessController, isSeatsController);
+            return new BarData(name, localization, beers, seatsNumber, isLoudnessController, isSeatsController);
 
         return null;
     }

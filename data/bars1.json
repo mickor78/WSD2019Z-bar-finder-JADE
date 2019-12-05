@@ -26,6 +26,7 @@
 		  "quantity": 10.0
 		}
 	  ],
+	  "seats_number": 50,
 	  "loudness_controller": true,
 	  "seats_controller": true
 	},
@@ -48,6 +49,7 @@
 		  "quantity": 36.5
 		}
 	  ],
+	  "seats_number": 40,
 	  "loudness_controller": true,
 	  "seats_controller": true
 	}

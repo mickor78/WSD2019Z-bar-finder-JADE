@@ -1,17 +1,25 @@
 package pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.loudness_controller_agent;
 
-import jade.core.Agent;
+import java.util.Random;
+
 import pl.edu.pw.eiti.wsd.bar_finder.BarFinderAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.loudness_controller_agent.behaviours.ProvideLoudnessLevel;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Bar;
 
 public class LoudnessControllerAgent extends BarFinderAgent {
 
-    protected void setup() {
-        System.out.println("Hello World! My name is "+getLocalName());
+    protected void setup(){
+        System.out.println("Hello World! My name is " + getLocalName());
+
         addBehaviour(new ProvideLoudnessLevel());
     }
 
-    public String checkLoudnessLevel(){
-        return "4.20";
+    public Bar.LoudnessLevel checkLoudnessLevel(){
+        Random random = new Random();
+
+        Bar.LoudnessLevel[] values = Bar.LoudnessLevel.values();
+        int idx = random.nextInt(values.length - 1) + 1;
+
+        return values[idx];
     }
 }

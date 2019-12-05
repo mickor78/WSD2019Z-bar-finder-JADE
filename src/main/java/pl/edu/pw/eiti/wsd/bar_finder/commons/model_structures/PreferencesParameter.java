@@ -1,6 +1,8 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures;
 
-public class PreferencesParameter {
+import java.io.Serializable;
+
+public class PreferencesParameter implements Serializable {
 
     private String name;
     private Object value;

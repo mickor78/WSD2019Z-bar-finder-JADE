@@ -16,9 +16,13 @@ import org.json.simple.parser.ParseException;
 
 import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Bar;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Preferences;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderAgentNameUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData.BARS_KEY;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData.CUSTOMERS_PREFERENCES_KEY;
+import static pl.edu.pw.eiti.wsd.bar_finder.commons.mappers.InputToModelMapper.Map;
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.JsonUtils.*;
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
 
@@ -76,43 +80,57 @@ public class BarFinderSystem
 
             // Create profiles for bars containers and start bars agents
             for (BarData bar : bars) {
-                Profile barContainerProfile = new ProfileImpl();
-                barContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
-                barContainerProfile.setParameter(Profile.CONTAINER_NAME, "Bar_container_" + bar.getName());
-                AgentContainer barContainer = runtime.createAgentContainer(barContainerProfile);
-                AgentController ag = barContainer.createNewAgent("bar_" + bar.getName(),
-                        BAR_AGENT_CLASS_PATH,
-                        new Object[]{}); // Arguments
-                ag.start();
+                Bar modelBar = Map(bar);
 
-                AgentController lc = barContainer.createNewAgent("bar_" + bar.getName() + "_loudness_controller_agent",
-                        LOUDNESS_CONTROLLER_AGENT_CLASS_PATH,
-                        new Object[]{}); // Arguments
-                lc.start();
+                if (modelBar != null) {
+                    Profile barContainerProfile = new ProfileImpl();
+                    barContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
+                    barContainerProfile.setParameter(Profile.CONTAINER_NAME, "Bar_container_" + modelBar.getName());
+                    AgentContainer barContainer = runtime.createAgentContainer(barContainerProfile);
+                    AgentController ba = barContainer.createNewAgent("bar_" + modelBar.getName(),
+                            BAR_AGENT_CLASS_PATH,
+                            new Object[]{modelBar}); // Arguments
+                    ba.start();
 
-                AgentController sc = barContainer.createNewAgent("bar_" + bar.getName() + "_seats_controller_agent",
-                        SEATS_CONTROLLER_AGENT_CLASS_PATH,
-                        new Object[]{}); // Arguments
-                sc.start();
+                    if (bar.isLoudnessController()) {
+                        AgentController lc = barContainer.createNewAgent(
+                                BarFinderAgentNameUtils.GetBarControllerName(modelBar.getName(), LOUDNESS_CONTROLLER_AGENT_NAME),
+                                LOUDNESS_CONTROLLER_AGENT_CLASS_PATH,
+                                new Object[]{}); // Arguments
+                        lc.start();
+                    }
 
-                AgentController rc = barContainer.createNewAgent("bar_" + bar.getName() + "_resources_controller_agent",
-                        RESOURCES_CONTROLLER_AGENT_CLASS_PATH,
-                        new Object[]{}); // Arguments
-                rc.start();
+                    if (bar.isSeatsController()) {
+                        AgentController sc = barContainer.createNewAgent(
+                                BarFinderAgentNameUtils.GetBarControllerName(modelBar.getName(), SEATS_CONTROLLER_AGENT_NAME),
+                                SEATS_CONTROLLER_AGENT_CLASS_PATH,
+                                new Object[]{modelBar.getSeatsNumber()}); // Arguments
+                        sc.start();
+                    }
 
+                    AgentController rc = barContainer.createNewAgent(
+                            BarFinderAgentNameUtils.GetBarControllerName(modelBar.getName(), RESOURCES_CONTROLLER_AGENT_NAME),
+                            RESOURCES_CONTROLLER_AGENT_CLASS_PATH,
+                            new Object[]{modelBar.getBeers()}); // Arguments
+                    rc.start();
+                }
             }
 
-//            // Create profile for customer container
+            // Create profile for customer container
 //            Profile customerContainerProfile = new ProfileImpl();
 //            customerContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
 //            customerContainerProfile.setParameter(Profile.CONTAINER_NAME, "Customers_container");
 //            AgentContainer customerContainer = runtime.createAgentContainer(customerContainerProfile);
 //            // Start customers agents
 //            for (PreferencesData preferencesData : preferences) {
-//                AgentController ag = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
-//                        CUSTOMER_AGENT_CLASS_PATH,
-//                        new Object[]{}); // Arguments
-//                ag.start();
+//                Preferences modelPreferences = Map(preferencesData);
+//
+//                if (modelPreferences != null) {
+//                    AgentController ca = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
+//                            CUSTOMER_AGENT_CLASS_PATH,
+//                            new Object[]{modelPreferences}); // Arguments
+//                    ca.start();
+//                }
 //            }
         }
         catch (StaleProxyException e) {

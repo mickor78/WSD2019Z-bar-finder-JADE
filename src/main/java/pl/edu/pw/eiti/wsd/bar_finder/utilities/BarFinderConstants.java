@@ -16,4 +16,7 @@ public class BarFinderConstants {
     public static final String RESOURCES_CONTROLLER_AGENT_CLASS_PATH = BASE_PACKAGE_PATH + ".bar_controller_agent.resources_controller_agent.ResourcesControllerAgent";
     public static final String SEATS_CONTROLLER_AGENT_CLASS_PATH = BASE_PACKAGE_PATH + ".bar_controller_agent.seats_controller_agent.SeatsControllerAgent";
 
+    public static final String LOUDNESS_CONTROLLER_AGENT_NAME = "loudness_controller_agent";
+    public static final String SEATS_CONTROLLER_AGENT_NAME = "seats_controller_agent";
+    public static final String RESOURCES_CONTROLLER_AGENT_NAME = "resources_controller_agent";
 }

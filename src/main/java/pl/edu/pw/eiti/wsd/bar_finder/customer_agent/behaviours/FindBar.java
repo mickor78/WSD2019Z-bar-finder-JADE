@@ -11,7 +11,7 @@ public class FindBar extends OneShotBehaviour {
     @Override
     public void action() {
         ACLMessage test = new ACLMessage(ACLMessage.INFORM);
-        for(AID aid : getAgent().getBars()){
+        for (AID aid : getAgent().getBars()){
             test.addReceiver(aid);
             System.out.println("Receiver found: " + aid.getLocalName());
         }

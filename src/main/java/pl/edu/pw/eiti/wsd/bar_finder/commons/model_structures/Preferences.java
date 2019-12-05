@@ -1,24 +1,16 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures;
 
+import java.io.Serializable;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Preferences extends Dictionary<String, PreferencesParameter> {
+public class Preferences extends Dictionary<String, PreferencesParameter> implements Serializable {
 
-    private String customer;
     private Dictionary<String, PreferencesParameter> preferencesDict;
 
-    public String getCustomer() {
-        return customer;
-    }
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
-    public Preferences(String customer)
+    public Preferences()
     {
-        setCustomer(customer);
         preferencesDict = new Hashtable<>();
     }
 
