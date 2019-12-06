@@ -17,6 +17,10 @@ public class CustomerAgent extends BarFinderAgent {
 
     private Preferences preferences;
 
+    public Preferences getPreferences() {
+        return preferences;
+    }
+
     protected void setup() {
         System.out.println("Hello World! My name is " + getLocalName());
 

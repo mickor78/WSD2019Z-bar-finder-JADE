@@ -154,7 +154,7 @@ public class BarBeer implements Serializable {
     @Override
     public String toString()
     {
-        return String.format("Beer: Name - %s, BreweryName - %s, Style - %s, Price - %f, Quantity - %f",
+        return String.format("Beer: Name - %s, BreweryName - %s, Style - %s, Price - %.2f, Quantity - %.2f",
                 name, breweryName, style.name(), price, quantity);
     }
 }

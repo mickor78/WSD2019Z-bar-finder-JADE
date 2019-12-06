@@ -1,9 +1,7 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures;
 
 import java.io.Serializable;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.*;
 
 public class Preferences extends Dictionary<String, PreferencesParameter> implements Serializable {
 
@@ -28,6 +26,10 @@ public class Preferences extends Dictionary<String, PreferencesParameter> implem
 
     public Enumeration<PreferencesParameter> elements() {
         return preferencesDict.elements();
+    }
+
+    public List<PreferencesParameter> values() {
+        return Collections.list(preferencesDict.elements());
     }
 
     public PreferencesParameter get(Object key) {

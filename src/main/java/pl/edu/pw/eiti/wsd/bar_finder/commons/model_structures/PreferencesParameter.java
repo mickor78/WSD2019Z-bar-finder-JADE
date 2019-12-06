@@ -39,4 +39,10 @@ public class PreferencesParameter implements Serializable {
         setValue(value);
         setImportance(importance);
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("Preferences parameter: name - %s, value - %s, importance - $.2f", name, value.toString(), importance);
+    }
 }
