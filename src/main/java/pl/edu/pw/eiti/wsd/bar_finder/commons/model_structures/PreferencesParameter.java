@@ -44,6 +44,6 @@ public class PreferencesParameter implements Concept {
     @Override
     public String toString()
     {
-        return String.format("Preferences parameter: name - %s, value - %s, importance - $.2f", name, value, importance);
+        return String.format("Preferences parameter: name - %s, value - %s, importance - %.2f", name, value, importance);
     }
 }

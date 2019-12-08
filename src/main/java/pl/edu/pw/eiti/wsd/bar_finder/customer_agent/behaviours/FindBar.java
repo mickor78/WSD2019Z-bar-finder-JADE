@@ -24,8 +24,8 @@ public class FindBar extends OneShotBehaviour {
         }
 
         CustomerAgent customerAgent = getAgent();
-        sendMessage(customerAgent, ACLMessage.INFORM, customerAgent.getCodec(), customerAgent.getOntology(),
-                customerAgent.getPreferences(), receivers);
+        sendMessage(customerAgent, ACLMessage.INFORM, receivers, customerAgent.getCodec(), customerAgent.getOntology(),
+                customerAgent.getPreferences());
         myAgent.addBehaviour(new AwaitOffers());
     }
 
