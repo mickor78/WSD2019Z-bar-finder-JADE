@@ -9,14 +9,13 @@ import jade.domain.FIPAException;
 
 public class BarFinderAgent extends Agent {
 
-
     protected void register( ServiceDescription sd) {
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
 
         try {
             DFAgentDescription list[] = DFService.search( this, dfd );
-            if ( list.length>0 )
+            if (list.length > 0)
                 DFService.deregister(this);
 
             dfd.addServices(sd);
@@ -31,11 +30,11 @@ public class BarFinderAgent extends Agent {
         ServiceDescription sd = new ServiceDescription();
         sd.setType( service );
         dfd.addServices(sd);
-        try{
+        try {
             DFAgentDescription[] result = DFService.search(this, dfd);
-            if (result.length>0)
-                return result[0].getName() ;
-        }catch (FIPAException fe) {
+            if (result.length > 0)
+                return result[0].getName();
+        } catch (FIPAException fe) {
             fe.printStackTrace();
         }
         return null;
@@ -50,14 +49,14 @@ public class BarFinderAgent extends Agent {
         SearchConstraints ALL = new SearchConstraints();
         ALL.setMaxResults(new Long(-1));
 
-        try{
+        try {
             DFAgentDescription[] result = DFService.search(this, dfd, ALL);
             AID[] agents = new AID[result.length];
-            for (int i=0; i<result.length; i++)
-                agents[i] = result[i].getName() ;
+            for (int i = 0; i < result.length; i++)
+                agents[i] = result[i].getName();
             return agents;
 
-        }catch (FIPAException fe){
+        } catch (FIPAException fe) {
             fe.printStackTrace();
         }
         return null;

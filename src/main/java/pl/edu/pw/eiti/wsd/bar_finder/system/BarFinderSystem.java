@@ -117,21 +117,21 @@ public class BarFinderSystem
             }
 
             // Create profile for customer container
-//            Profile customerContainerProfile = new ProfileImpl();
-//            customerContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
-//            customerContainerProfile.setParameter(Profile.CONTAINER_NAME, "Customers_container");
-//            AgentContainer customerContainer = runtime.createAgentContainer(customerContainerProfile);
-//            // Start customers agents
-//            for (PreferencesData preferencesData : preferences) {
-//                Preferences modelPreferences = Map(preferencesData);
-//
-//                if (modelPreferences != null) {
-//                    AgentController ca = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
-//                            CUSTOMER_AGENT_CLASS_PATH,
-//                            new Object[]{modelPreferences}); // Arguments
-//                    ca.start();
-//                }
-//            }
+            Profile customerContainerProfile = new ProfileImpl();
+            customerContainerProfile.setParameter(Profile.MAIN_HOST, "localhost");
+            customerContainerProfile.setParameter(Profile.CONTAINER_NAME, "Customers_container");
+            AgentContainer customerContainer = runtime.createAgentContainer(customerContainerProfile);
+            // Start customers agents
+            for (PreferencesData preferencesData : preferences) {
+                Preferences modelPreferences = Map(preferencesData);
+
+                if (modelPreferences != null) {
+                    AgentController ca = customerContainer.createNewAgent("customer_" + preferencesData.getCustomer(),
+                            CUSTOMER_AGENT_CLASS_PATH,
+                            new Object[]{modelPreferences}); // Arguments
+                    ca.start();
+                }
+            }
         }
         catch (StaleProxyException e) {
             e.printStackTrace();

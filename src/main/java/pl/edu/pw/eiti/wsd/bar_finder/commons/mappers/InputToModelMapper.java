@@ -1,9 +1,9 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.mappers;
 
+import java.util.List;
+
 import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.*;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.*;
-
-import java.util.List;
 
 public final class InputToModelMapper {
 
@@ -68,7 +68,7 @@ public final class InputToModelMapper {
             return null;
 
         String name = input.getName();
-        Object value = input.getValue();
+        String value = input.getValue().toString();
         double importance = input.getImportance();
 
         if (!ParametersNames.ALL.contains(name) || value == null)
@@ -90,7 +90,7 @@ public final class InputToModelMapper {
             inputPreferencesParameters.forEach(p -> {
                 PreferencesParameter preferencesParameter = Map(p);
                 if (preferencesParameter != null) {
-                    preferences.put(preferencesParameter.getName(), preferencesParameter);
+                    preferences.getPreferencesParameters().add(preferencesParameter);
                 }
             });
         }

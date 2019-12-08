@@ -1,11 +1,12 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures;
 
-import java.io.Serializable;
+import jade.content.Concept;
 
-public class PreferencesParameter implements Serializable {
+public class PreferencesParameter implements Concept {
 
     private String name;
-    private Object value;
+    // Due to ontology, this field must be string
+    private String value;
     private double importance;
 
     public String getName() {
@@ -15,10 +16,10 @@ public class PreferencesParameter implements Serializable {
         this.name = name;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -33,7 +34,7 @@ public class PreferencesParameter implements Serializable {
     public PreferencesParameter()
     {}
 
-    public PreferencesParameter(String name, Object value, double importance)
+    public PreferencesParameter(String name, String value, double importance)
     {
         setName(name);
         setValue(value);
@@ -43,6 +44,6 @@ public class PreferencesParameter implements Serializable {
     @Override
     public String toString()
     {
-        return String.format("Preferences parameter: name - %s, value - %s, importance - $.2f", name, value.toString(), importance);
+        return String.format("Preferences parameter: name - %s, value - %s, importance - $.2f", name, value, importance);
     }
 }

@@ -1,30 +1,32 @@
 package pl.edu.pw.eiti.wsd.bar_finder.customer_agent.behaviours;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 
 import pl.edu.pw.eiti.wsd.bar_finder.customer_agent.CustomerAgent;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
+
+import static pl.edu.pw.eiti.wsd.bar_finder.utilities.JadeUtils.sendMessage;
 
 public class FindBar extends OneShotBehaviour {
     @Override
     public void action() {
-        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-        for (AID aid : getAgent().getBars()){
-            msg.addReceiver(aid);
-            System.out.println("Receiver found: " + aid.getLocalName());
+        List<AID> receivers = new LinkedList<>();
+        // TODO: Limit bars count.
+        for (AID aid : getAgent().getBars()) {
+            receivers.add(aid);
+            ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " - " + "receiver found: " + aid.getLocalName());
         }
-        try {
-            msg.setContentObject(getAgent().getPreferences());
-            myAgent.send(msg);
-            myAgent.addBehaviour(new AwaitOffers());
-        }
-        catch (IOException e) {
-            // TODO:
-            e.printStackTrace();
-        }
+
+        CustomerAgent customerAgent = getAgent();
+        sendMessage(customerAgent, ACLMessage.INFORM, customerAgent.getCodec(), customerAgent.getOntology(),
+                customerAgent.getPreferences(), receivers);
+        myAgent.addBehaviour(new AwaitOffers());
     }
 
     public CustomerAgent getAgent(){

@@ -2,6 +2,9 @@ package pl.edu.pw.eiti.wsd.bar_finder.bar_agent;
 
 import java.util.List;
 
+import jade.content.lang.Codec;
+import jade.content.lang.sl.SLCodec;
+import jade.content.onto.Ontology;
 import jade.core.AID;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 
@@ -9,6 +12,7 @@ import pl.edu.pw.eiti.wsd.bar_finder.BarFinderAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BarOfferManager;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Bar;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.BarBeer;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.ontology.PreferencesOntology;
 import pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderAgentNameUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
@@ -20,6 +24,9 @@ public class BarAgent extends BarFinderAgent {
     private AID resourcesControllerAgentAID;
 
     private Bar bar;
+
+    private Codec codec = new SLCodec();
+    private Ontology preferencesOntology = PreferencesOntology.getInstance();
 
     public AID getLoudnessControllerAgentAID() {
         return loudnessControllerAgentAID;
@@ -63,6 +70,14 @@ public class BarAgent extends BarFinderAgent {
         this.bar.setLoudnessLevel(loudnessLevel);
     }
 
+    public Codec getCodec() {
+        return codec;
+    }
+
+    public Ontology getPreferencesOntology() {
+        return preferencesOntology;
+    }
+
     protected void setup() {
         System.out.println("Hello World! My name is " + getLocalName());
 
@@ -80,6 +95,10 @@ public class BarAgent extends BarFinderAgent {
             sd.setType(BAR_AGENT);
             sd.setName(getLocalName());
             register(sd);
+
+            // Register language and ontology
+            getContentManager().registerLanguage(codec);
+            getContentManager().registerOntology(preferencesOntology);
 
             loudnessControllerAgentAID = new AID(
                     BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), LOUDNESS_CONTROLLER_AGENT_NAME),

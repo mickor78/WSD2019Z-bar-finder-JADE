@@ -1,5 +1,6 @@
 package pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours;
 
+import jade.content.onto.BasicOntology;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;

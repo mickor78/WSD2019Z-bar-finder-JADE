@@ -1,46 +1,40 @@
 package pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures;
 
-import java.io.Serializable;
-import java.util.*;
+import jade.content.Concept;
 
-public class Preferences extends Dictionary<String, PreferencesParameter> implements Serializable {
+import java.util.LinkedList;
+import java.util.List;
 
-    private Dictionary<String, PreferencesParameter> preferencesDict;
+public class Preferences implements Concept {
 
-    public Preferences()
-    {
-        preferencesDict = new Hashtable<>();
+    private List<PreferencesParameter> preferencesParameters;
+
+    public List<PreferencesParameter> getPreferencesParameters() {
+        return preferencesParameters;
     }
 
-    public int size() {
-        return preferencesDict.size();
+    public void setPreferencesParameters(List<PreferencesParameter> preferencesParameters) {
+        this.preferencesParameters = preferencesParameters;
     }
 
-    public boolean isEmpty() {
-        return preferencesDict.isEmpty();
+    public Preferences() {
+        preferencesParameters = new LinkedList<>();
     }
 
-    public Enumeration<String> keys() {
-        return preferencesDict.keys();
-    }
+    @Override
+    public String toString() {
+        String result = "";
+        boolean isFirst = true;
+        for (PreferencesParameter p: preferencesParameters) {
+            if (isFirst) {
+                result = result.concat(p.toString());
+                isFirst = false;
+            }
+            else {
+                result = result.concat("\n" + p.toString());
+            }
+        }
 
-    public Enumeration<PreferencesParameter> elements() {
-        return preferencesDict.elements();
-    }
-
-    public List<PreferencesParameter> values() {
-        return Collections.list(preferencesDict.elements());
-    }
-
-    public PreferencesParameter get(Object key) {
-        return preferencesDict.get(key);
-    }
-
-    public PreferencesParameter put(String key, PreferencesParameter value) {
-        return preferencesDict.put(key, value);
-    }
-
-    public PreferencesParameter remove(Object key) {
-        return preferencesDict.remove(key);
+        return  result;
     }
 }
