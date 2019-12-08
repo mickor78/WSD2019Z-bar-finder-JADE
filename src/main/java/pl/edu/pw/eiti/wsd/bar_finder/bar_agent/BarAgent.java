@@ -1,5 +1,8 @@
 package pl.edu.pw.eiti.wsd.bar_finder.bar_agent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import jade.content.lang.Codec;
@@ -112,5 +115,15 @@ public class BarAgent extends BarFinderAgent {
 
             addBehaviour(new BarOfferManager());
         }
+    }
+
+    public List<AID> getNearbyBars(){
+        //TODO: localization based
+        //tmp
+        List<AID> bars = new ArrayList<>(Arrays.asList(this.searchDF(BAR_AGENT)));
+        bars.remove(this.getAID());
+        Collections.shuffle(bars);
+        int barsToReturn = bars.size()/2 + 1;
+        return bars.subList(0, barsToReturn);
     }
 }

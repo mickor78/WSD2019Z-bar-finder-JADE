@@ -2,30 +2,25 @@ package pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours;
 
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.UnreadableException;
-import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.PreferencesDictionary;
+import jade.lang.acl.MessageTemplate;
+import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BarOfferManager;
+
+import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.BAR_AGENT_ROLE_BOM;
 
 public class AwaitNegotiations extends CyclicBehaviour {
     public void action() {
 
-        ACLMessage msg = myAgent.receive();
+        ACLMessage msg = myAgent.receive(MessageTemplate.MatchPerformative(ACLMessage.CFP));
 
-        try {
-            if (msg != null) {
-                System.out.println(myAgent.getLocalName()+" - received: "+ msg.getContent());
-                //tmp
-                PreferencesDictionary preferences = (PreferencesDictionary) msg.getContentObject();
-                //add negotiations behaviour
-            } else {
-                block();
-            }
-        }
-        catch (UnreadableException e) {
-            System.out.println(myAgent.getLocalName() + ": not understood.");
-            ACLMessage reply = msg.createReply();
-            reply.setPerformative(ACLMessage.NOT_UNDERSTOOD);
-            reply.setContent("co");
-            myAgent.send(reply);
-        }
+        if (msg != null) {
+            System.out.println(myAgent.getLocalName() + " - NEGOTIATIONS: " + msg.getContent());
+            getBOM().addSubBehaviour(new Negotiations(BAR_AGENT_ROLE_BOM, msg.getSender().getLocalName()+myAgent.getLocalName(), msg.getSender()));
+        } else
+            block();
     }
+
+    public BarOfferManager getBOM(){
+        return (BarOfferManager)getParent();
+    }
+
 }

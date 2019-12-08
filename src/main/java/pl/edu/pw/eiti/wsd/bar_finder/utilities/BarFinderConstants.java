@@ -8,6 +8,9 @@ public class BarFinderConstants {
     public static final String RESOURCES_CONTROLLER_AGENT = "resourcesControllerAgent";
     public static final String SEATS_CONTROLLER_AGENT = "seatsControllerAgent";
 
+    public static final String BAR_AGENT_ROLE_BOM = "BarOfferManager";
+    public static final String BAR_AGENT_ROLE_BOH = "BestOfferHolder";
+
     public static final String BASE_PACKAGE_PATH = "pl.edu.pw.eiti.wsd.bar_finder";
 
     public static final String BAR_AGENT_CLASS_PATH = BASE_PACKAGE_PATH + ".bar_agent.BarAgent";
