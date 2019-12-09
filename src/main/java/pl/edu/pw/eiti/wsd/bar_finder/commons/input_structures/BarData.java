@@ -19,53 +19,10 @@ public class BarData {
     private boolean isLoudnessController = true;
     private boolean isSeatsController = true;
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public BarData() {
     }
 
-    public String getLocalization() {
-        return localization;
-    }
-    public void setLocalization(String localization) {
-        this.localization = localization;
-    }
-
-    public List<BarBeerData> getBeers() {
-        return beers;
-    }
-    public void setBeers(List<BarBeerData> beers) {
-        this.beers = beers;
-    }
-
-    public Integer getSeatsNumber() {
-        return seatsNumber;
-    }
-    public void setSeatsNumber(Integer seatsNumber) {
-        this.seatsNumber = seatsNumber;
-    }
-
-    public boolean isLoudnessController() {
-        return isLoudnessController;
-    }
-    public void setIsLoudnessController(boolean loudnessController) {
-        isLoudnessController = loudnessController;
-    }
-
-    public boolean isSeatsController() {
-        return isSeatsController;
-    }
-    public void setIsSeatsController(boolean seatsController) {
-        isSeatsController = seatsController;
-    }
-
-    public BarData()
-    {}
-
-    public BarData(String name, String localization, List<BarBeerData> beers, Integer seatsNumber)
-    {
+    public BarData(String name, String localization, List<BarBeerData> beers, Integer seatsNumber) {
         setName(name);
         setLocalization(localization);
         setBeers(beers);
@@ -73,13 +30,60 @@ public class BarData {
     }
 
     public BarData(String name, String localization, List<BarBeerData> beers, Integer seatsNumber,
-                   boolean isLoudnessController, boolean isSeatsController)
-    {
+                   boolean isLoudnessController, boolean isSeatsController) {
         setName(name);
         setLocalization(localization);
         setBeers(beers);
         setSeatsNumber(seatsNumber);
         setIsLoudnessController(isLoudnessController);
         setIsSeatsController(isSeatsController);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocalization() {
+        return localization;
+    }
+
+    public void setLocalization(String localization) {
+        this.localization = localization;
+    }
+
+    public List<BarBeerData> getBeers() {
+        return beers;
+    }
+
+    public void setBeers(List<BarBeerData> beers) {
+        this.beers = beers;
+    }
+
+    public Integer getSeatsNumber() {
+        return seatsNumber;
+    }
+
+    public void setSeatsNumber(Integer seatsNumber) {
+        this.seatsNumber = seatsNumber;
+    }
+
+    public boolean isLoudnessController() {
+        return isLoudnessController;
+    }
+
+    public void setIsLoudnessController(boolean loudnessController) {
+        isLoudnessController = loudnessController;
+    }
+
+    public boolean isSeatsController() {
+        return isSeatsController;
+    }
+
+    public void setIsSeatsController(boolean seatsController) {
+        isSeatsController = seatsController;
     }
 }

@@ -9,6 +9,10 @@ public class Preferences implements Concept {
 
     private List<PreferencesParameter> preferencesParameters;
 
+    public Preferences() {
+        preferencesParameters = new LinkedList<>();
+    }
+
     public List<PreferencesParameter> getPreferencesParameters() {
         return preferencesParameters;
     }
@@ -17,24 +21,19 @@ public class Preferences implements Concept {
         this.preferencesParameters = preferencesParameters;
     }
 
-    public Preferences() {
-        preferencesParameters = new LinkedList<>();
-    }
-
     @Override
     public String toString() {
         String result = "";
         boolean isFirst = true;
-        for (PreferencesParameter p: preferencesParameters) {
+        for (PreferencesParameter p : preferencesParameters) {
             if (isFirst) {
                 result = result.concat(p.toString());
                 isFirst = false;
-            }
-            else {
+            } else {
                 result = result.concat("\n" + p.toString());
             }
         }
 
-        return  result;
+        return result;
     }
 }

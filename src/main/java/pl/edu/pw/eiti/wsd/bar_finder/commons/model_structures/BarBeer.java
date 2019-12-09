@@ -4,6 +4,68 @@ import java.io.Serializable;
 
 public class BarBeer implements Serializable {
 
+    private String name;
+    private String breweryName;
+    private BeerStyle style;
+    private double price;
+    private double quantity;
+    public BarBeer() {
+    }
+
+    public BarBeer(String name, String breweryName, BeerStyle style, double price, double quantity) {
+        setName(name);
+        setBreweryName(breweryName);
+        setStyle(style);
+        setPrice(price);
+        setQuantity(quantity);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
+    }
+
+    public BeerStyle getStyle() {
+        return style;
+    }
+
+    public void setStyle(BeerStyle style) {
+        this.style = style;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Beer: Name - %s, BreweryName - %s, Style - %s, Price - %.2f, Quantity - %.2f",
+                name, breweryName, style.name(), price, quantity);
+    }
+
     // https://www.wiki.piwo.org/Zestawienie_styl%C3%B3w_piw_(tabela)
     public enum BeerStyle {
         UNKNOWN,
@@ -96,65 +158,6 @@ public class BarBeer implements Serializable {
 
         OLD_ALE,
         ENGLISH_BARLEYWINE,
-        AMERICAN_BARLEYWINE,
-    }
-
-    private String name;
-    private String breweryName;
-    private BeerStyle style;
-    private double price;
-    private double quantity;
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getBreweryName() {
-        return breweryName;
-    }
-    public void setBreweryName(String breweryName) {
-        this.breweryName = breweryName;
-    }
-
-    public BeerStyle getStyle() {
-        return style;
-    }
-    public void setStyle(BeerStyle style) {
-        this.style = style;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
-    public BarBeer()
-    {}
-
-    public BarBeer(String name, String breweryName, BeerStyle style, double price, double quantity) {
-        setName(name);
-        setBreweryName(breweryName);
-        setStyle(style);
-        setPrice(price);
-        setQuantity(quantity);
-    }
-
-    @Override
-    public String toString()
-    {
-        return String.format("Beer: Name - %s, BreweryName - %s, Style - %s, Price - %.2f, Quantity - %.2f",
-                name, breweryName, style.name(), price, quantity);
+        AMERICAN_BARLEYWINE
     }
 }

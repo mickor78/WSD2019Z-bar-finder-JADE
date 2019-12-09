@@ -7,8 +7,7 @@ import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.*;
 
 public final class InputToModelMapper {
 
-    public static BarBeer Map(BarBeerData input)
-    {
+    public static BarBeer Map(BarBeerData input) {
         if (input == null)
             return null;
 
@@ -24,17 +23,14 @@ public final class InputToModelMapper {
         try {
             if (input.getStyle() != null)
                 beerStyle = BarBeer.BeerStyle.valueOf(input.getStyle());
-        }
-        catch (IllegalArgumentException ignored)
-        {
+        } catch (IllegalArgumentException ignored) {
             // TODO: Logging.
         }
 
         return new BarBeer(name, breweryName, beerStyle, price, quantity);
     }
 
-    public static Bar Map(BarData input)
-    {
+    public static Bar Map(BarData input) {
         if (input == null)
             return null;
 
@@ -62,8 +58,7 @@ public final class InputToModelMapper {
         return bar;
     }
 
-    public static PreferencesParameter Map(PreferencesParameterData input)
-    {
+    public static PreferencesParameter Map(PreferencesParameterData input) {
         if (input == null)
             return null;
 
@@ -77,16 +72,14 @@ public final class InputToModelMapper {
         return new PreferencesParameter(name, value, importance);
     }
 
-    public static Preferences Map(PreferencesData input)
-    {
+    public static Preferences Map(PreferencesData input) {
         if (input == null)
             return null;
 
         Preferences preferences = new Preferences();
 
         List<PreferencesParameterData> inputPreferencesParameters = input.getPreferences();
-        if (inputPreferencesParameters != null && !inputPreferencesParameters.isEmpty())
-        {
+        if (inputPreferencesParameters != null && !inputPreferencesParameters.isEmpty()) {
             inputPreferencesParameters.forEach(p -> {
                 PreferencesParameter preferencesParameter = Map(p);
                 if (preferencesParameter != null) {

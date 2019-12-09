@@ -42,12 +42,11 @@ public class CustomerAgent extends BarFinderAgent {
         // Get agent parameters
         Object[] args = getArguments();
         if (args != null && args.length > 0)
-            this.preferences = (Preferences)args[0];
+            this.preferences = (Preferences) args[0];
 
         if (preferences == null) {
             doDelete();
-        }
-        else {
+        } else {
             // Register agent
             ServiceDescription sd = new ServiceDescription();
             sd.setType(CUSTOMER_AGENT);
@@ -62,7 +61,7 @@ public class CustomerAgent extends BarFinderAgent {
         }
     }
 
-    public List<AID> getBars(){
+    public List<AID> getBars() {
         return Arrays.asList(this.searchDF(BAR_AGENT));
     }
 }

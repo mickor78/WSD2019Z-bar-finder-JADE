@@ -18,7 +18,7 @@ public class GetBarParameters extends TickerBehaviour {
 
     protected void onTick() {
 
-        if(firstRun){
+        if (firstRun) {
             getBOM().addSubBehaviour(new GetControllerAgentResponse(getAgent().getSeatsControllerAgentAID(), SEATS_CONTROLLER_AGENT));
             getBOM().addSubBehaviour(new GetControllerAgentResponse(getAgent().getLoudnessControllerAgentAID(), LOUDNESS_CONTROLLER_AGENT));
             getBOM().addSubBehaviour(new GetControllerAgentResponse(getAgent().getResourcesControllerAgentAID(), RESOURCES_CONTROLLER_AGENT));
@@ -39,11 +39,11 @@ public class GetBarParameters extends TickerBehaviour {
         myAgent.send(resourcesQuery);
     }
 
-    public BarAgent getAgent(){
-        return (BarAgent)myAgent;
+    public BarAgent getAgent() {
+        return (BarAgent) myAgent;
     }
 
-    public BarOfferManager getBOM(){
-        return (BarOfferManager)getParent();
+    public BarOfferManager getBOM() {
+        return (BarOfferManager) getParent();
     }
 }

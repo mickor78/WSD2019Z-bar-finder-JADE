@@ -9,14 +9,14 @@ import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours.GetBarP
 
 public class BarOfferManager extends ParallelBehaviour {
 
-    public BarOfferManager(){
+    public BarOfferManager() {
         super(ParallelBehaviour.WHEN_ALL);
         this.addSubBehaviour(new GetBarParameters(myAgent, 10000));
         this.addSubBehaviour(new AwaitPreferences());
         this.addSubBehaviour(new AwaitNegotiations());
     }
 
-    public BarAgent getAgent(){
-       return (BarAgent)myAgent;
+    public BarAgent getAgent() {
+        return (BarAgent) myAgent;
     }
 }

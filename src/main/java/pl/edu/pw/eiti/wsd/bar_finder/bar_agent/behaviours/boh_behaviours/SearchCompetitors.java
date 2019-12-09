@@ -5,7 +5,7 @@ import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.BarAgent;
-import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours.Negotiations;
+import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.common_behaviours.Negotiations;
 
 import java.util.List;
 
@@ -17,18 +17,17 @@ public class SearchCompetitors extends Behaviour {
     private int expectedResponses = 0;
 
     public void action() {
-        switch (step)
-        {
+        switch (step) {
             case 0:
                 ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
                 List<AID> receivers = getParentB().getNearbyBars();
                 expectedResponses = receivers.size();
                 System.out.println(myAgent.getLocalName() + " - found bars nearby:" + expectedResponses);
-                if(expectedResponses == 0){
+                if (expectedResponses == 0) {
                     // no more nearby bars, send return best offer to client?
                     step = 2;
                 } else {
-                    for(AID receiver : receivers){
+                    for (AID receiver : receivers) {
                         cfp.addReceiver(receiver);
                     }
                     cfp.setConversationId("start_negotiations");
@@ -38,10 +37,10 @@ public class SearchCompetitors extends Behaviour {
                 break;
             case 1:
                 ACLMessage response = myAgent.receive(MessageTemplate.MatchConversationId("start_negotiations"));
-                if(response != null){
-                    getParentB().addSubBehaviour(new Negotiations(BAR_AGENT_ROLE_BOH, myAgent.getLocalName()+ response.getSender().getLocalName(), response.getSender()));
+                if (response != null) {
+                    getParentB().addSubBehaviour(new Negotiations(BAR_AGENT_ROLE_BOH, myAgent.getLocalName() + response.getSender().getLocalName(), response.getSender()));
                     receivedResponses++;
-                    if(receivedResponses == expectedResponses)
+                    if (receivedResponses == expectedResponses)
                         step = 2;
                 } else {
                     block();
@@ -54,11 +53,11 @@ public class SearchCompetitors extends Behaviour {
         return step == 2;
     }
 
-    public BarAgent getAgent(){
-        return (BarAgent)myAgent;
+    public BarAgent getAgent() {
+        return (BarAgent) myAgent;
     }
 
-    public StartNegotiations getParentB(){
+    public StartNegotiations getParentB() {
         return (StartNegotiations) getParent();
     }
 }

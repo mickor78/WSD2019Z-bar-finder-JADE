@@ -11,24 +11,24 @@ import java.util.List;
 
 public class StartNegotiations extends ParallelBehaviour {
 
-    public StartNegotiations(){
+    public StartNegotiations() {
         super(ParallelBehaviour.WHEN_ALL);
         this.addSubBehaviour(new SearchCompetitors());
     }
 
-    public BarAgent getAgent(){
-        return (BarAgent)myAgent;
+    public BarAgent getAgent() {
+        return (BarAgent) myAgent;
     }
 
-    public List<AID> getNearbyBars(){
+    public List<AID> getNearbyBars() {
         List<AID> result = new ArrayList<>(getAgent().getNearbyBars());
-        if(getBOH().getNegotiationHistory() != null) {
+        if (getBOH().getNegotiationHistory() != null) {
             result.removeAll(getBOH().getNegotiationHistory());
         }
         return result;
     }
 
-    public BestOfferHolder getBOH(){
-        return (BestOfferHolder)getParent();
+    public BestOfferHolder getBOH() {
+        return (BestOfferHolder) getParent();
     }
 }

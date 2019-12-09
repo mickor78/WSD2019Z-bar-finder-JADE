@@ -29,7 +29,7 @@ public class FindBar extends OneShotBehaviour {
         myAgent.addBehaviour(new AwaitOffers());
     }
 
-    public CustomerAgent getAgent(){
-        return (CustomerAgent)myAgent;
+    public CustomerAgent getAgent() {
+        return (CustomerAgent) myAgent;
     }
 }

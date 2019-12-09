@@ -30,10 +30,10 @@ public class AwaitPreferences extends CyclicBehaviour {
                 AID customerAID = msg.getSender();
                 ContentElement receivedContent = myAgent.getContentManager().extractContent(msg);
                 if (customerAID != null && receivedContent instanceof Action) {
-                    Action receivedAction = (Action)receivedContent;
+                    Action receivedAction = (Action) receivedContent;
                     Concept concept = receivedAction.getAction();
                     if (concept instanceof Preferences) {
-                        Preferences customerPreferences = (Preferences)concept;
+                        Preferences customerPreferences = (Preferences) concept;
                         if (!customerPreferences.getPreferencesParameters().isEmpty()) {
                             ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " + msg.getSender().getLocalName()
                                     + " :\n" + customerPreferences.toString());
@@ -56,8 +56,7 @@ public class AwaitPreferences extends CyclicBehaviour {
             } else {
                 block();
             }
-        }
-        catch (UngroundedException e) {
+        } catch (UngroundedException e) {
             e.printStackTrace();
         } catch (OntologyException e) {
             e.printStackTrace();
@@ -66,8 +65,8 @@ public class AwaitPreferences extends CyclicBehaviour {
         }
     }
 
-    public BarAgent getAgent(){
-        return (BarAgent)myAgent;
+    public BarAgent getAgent() {
+        return (BarAgent) myAgent;
     }
 
 }

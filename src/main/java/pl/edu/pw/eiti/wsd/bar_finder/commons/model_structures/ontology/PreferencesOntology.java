@@ -18,10 +18,6 @@ public class PreferencesOntology extends Ontology implements PreferencesVocabula
 
     private static Ontology instance = new PreferencesOntology();
 
-    public static Ontology getInstance() {
-        return instance;
-    }
-
     private PreferencesOntology() {
         super(PREFERENCES_ONTOLOGY_NAME, BasicOntology.getInstance(), new CFReflectiveIntrospector());
 
@@ -35,10 +31,13 @@ public class PreferencesOntology extends Ontology implements PreferencesVocabula
             ConceptSchema ps = new ConceptSchema(PREFERENCES);
             add(ps, Preferences.class);
             ps.add(PREFERENCES_PARAMETERS, (ConceptSchema) getSchema(PREFERENCES_PARAMETER), 1, ObjectSchema.UNLIMITED);
-        }
-        catch (OntologyException ex) {
+        } catch (OntologyException ex) {
             // TODO:
             ex.printStackTrace();
         }
+    }
+
+    public static Ontology getInstance() {
+        return instance;
     }
 }

@@ -6,8 +6,7 @@ public class PreferencesDictionary extends Dictionary<String, PreferencesParamet
 
     private Dictionary<String, PreferencesParameter> preferencesDict;
 
-    public PreferencesDictionary()
-    {
+    public PreferencesDictionary() {
         preferencesDict = new Hashtable<>();
     }
 

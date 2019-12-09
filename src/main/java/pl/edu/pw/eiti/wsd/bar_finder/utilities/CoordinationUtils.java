@@ -37,8 +37,7 @@ public final class CoordinationUtils {
         try {
             x = format.parse(coordsArray[0]).doubleValue();
             y = format.parse(coordsArray[1]).doubleValue();
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             // TODO:
             e.printStackTrace();
         }

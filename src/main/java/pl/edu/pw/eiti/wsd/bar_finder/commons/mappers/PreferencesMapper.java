@@ -32,7 +32,7 @@ public final class PreferencesMapper {
         Preferences result = new Preferences();
         List<PreferencesParameter> resultParametersList = result.getPreferencesParameters();
 
-        for (Enumeration<PreferencesParameter> e = input.elements(); e.hasMoreElements();) {
+        for (Enumeration<PreferencesParameter> e = input.elements(); e.hasMoreElements(); ) {
             PreferencesParameter p = e.nextElement();
             String pName = p.getName();
             if (pName != null && !pName.isEmpty())

@@ -9,9 +9,19 @@ public class PreferencesParameter implements Concept {
     private String value;
     private double importance;
 
+    public PreferencesParameter() {
+    }
+
+    public PreferencesParameter(String name, String value, double importance) {
+        setName(name);
+        setValue(value);
+        setImportance(importance);
+    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -19,6 +29,7 @@ public class PreferencesParameter implements Concept {
     public String getValue() {
         return value;
     }
+
     public void setValue(String value) {
         this.value = value;
     }
@@ -26,24 +37,14 @@ public class PreferencesParameter implements Concept {
     public double getImportance() {
         return importance;
     }
+
     public void setImportance(double importance) {
         this.importance = importance < 0.0 ?
-            0.0 : importance > 1.0 ? 1.0 : importance;
-    }
-
-    public PreferencesParameter()
-    {}
-
-    public PreferencesParameter(String name, String value, double importance)
-    {
-        setName(name);
-        setValue(value);
-        setImportance(importance);
+                0.0 : importance > 1.0 ? 1.0 : importance;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return String.format("Preferences parameter: name - %s, value - %s, importance - %.2f", name, value, importance);
     }
 }

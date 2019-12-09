@@ -36,9 +36,9 @@ public class GetControllerAgentResponse extends CyclicBehaviour {
                 switch (controllerType) {
                     case LOUDNESS_CONTROLLER_AGENT:
                         Bar.LoudnessLevel loudnessLevel = (Bar.LoudnessLevel)response.getContentObject();
+                        getAgent().setLoudnessLevel(loudnessLevel);
                         ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " +
                                 response.getSender().getLocalName() + ": " + loudnessLevel.name());
-                        getAgent().setLoudnessLevel(loudnessLevel);
                         break;
                     case SEATS_CONTROLLER_AGENT:
                         Integer freeSeatsNumber = (Integer)response.getContentObject();

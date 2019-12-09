@@ -14,9 +14,21 @@ public class BarBeerData {
     private double price;
     private double quantity;
 
+    public BarBeerData() {
+    }
+
+    public BarBeerData(String name, String breweryName, String style, double price, double quantity) {
+        setName(name);
+        setBreweryName(breweryName);
+        setStyle(style);
+        setPrice(price);
+        setQuantity(quantity);
+    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -24,6 +36,7 @@ public class BarBeerData {
     public String getBreweryName() {
         return breweryName;
     }
+
     public void setBreweryName(String breweryName) {
         this.breweryName = breweryName;
     }
@@ -31,6 +44,7 @@ public class BarBeerData {
     public String getStyle() {
         return style;
     }
+
     public void setStyle(String style) {
         this.style = style;
     }
@@ -38,6 +52,7 @@ public class BarBeerData {
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -45,19 +60,8 @@ public class BarBeerData {
     public double getQuantity() {
         return quantity;
     }
+
     public void setQuantity(double quantity) {
         this.quantity = quantity;
-    }
-
-    public BarBeerData()
-    {}
-
-    public BarBeerData(String name, String breweryName, String style, double price, double quantity)
-    {
-        setName(name);
-        setBreweryName(breweryName);
-        setStyle(style);
-        setPrice(price);
-        setQuantity(quantity);
     }
 }

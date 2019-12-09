@@ -20,6 +20,7 @@ public class ProvideLoudnessLevel extends CyclicBehaviour {
                     reply.setContentObject(getAgent().checkLoudnessLevel());
                 } catch (IOException e) {
                     // TODO: Think about it.
+                    reply.setPerformative(ACLMessage.FAILURE);
                     e.printStackTrace();
                 }
             } else {
