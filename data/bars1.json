@@ -2,7 +2,7 @@
 	"bars": [
 	{
 	  "name": "Jabberwocky",
-	  "localization": "Nowogrodzka 12, Warszawa",
+	  "localization": "3.0;12.0",
 	  "beers": [
 		{
 		  "name": "Aparat",
@@ -32,7 +32,7 @@
 	},
 	{
 	  "name": "Kufle_i_kapsle",
-	  "localization": "Popiełuszki 19/21, Warszawa",
+	  "localization": "5.0;7.0",
 	  "beers": [
 		{
 		  "name": "Ogrodnik",

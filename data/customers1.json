@@ -5,7 +5,7 @@
 	  "preferences": [
 	  {
 		"name": "localization",
-		"value": "Marszałkowska 2, Warszawa",
+		"value": "10.0;10.0",
 		"importance": 0.80
 	  },
 	  {
@@ -20,7 +20,7 @@
 	  "preferences": [
 	  {
 		"name": "localization",
-		"value": "Marszałkowska 34, Warszawa",
+		"value": "15.0;7.0",
 		"importance": 0.90
 	  },
 	  {
