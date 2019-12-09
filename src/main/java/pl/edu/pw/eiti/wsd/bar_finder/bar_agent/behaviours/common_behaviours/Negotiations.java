@@ -81,27 +81,21 @@ public class Negotiations extends Behaviour {
                 //BOM - send bar object as an offer
                 ACLMessage proposalOffer = new ACLMessage(ACLMessage.PROPOSE);
                 proposalOffer.addReceiver(competitor);
-
                 try {
                     proposalOffer.setContentObject(getAgent().getBar());
                 } catch (IOException e) {
                     //TODO logging, how to handle it?
                     e.printStackTrace();
                 }
+                getAgent().send(proposalOffer);
                 break;
             case AWAIT_OFFER_STATE:
-                // receive offer
-                // update competitors score
-                // state = SEND_OFFER_STATE
+                ACLMessage competitorResponse = myAgent.receive(MessageTemplate.MatchSender(competitor));
+                if (Objects.nonNull(competitorResponse) && competitorResponse.getPerformative() == ACLMessage.ACCEPT_PROPOSAL) {
 
-                // receive defeat admission
-                // state = END_NEGOTIATIONS
+                } else state = END_NEGOTIATIONS;
 
-                // receive failure
-                // probably BOH changed
-                // state = END_NEGOTIATIONS
-
-
+                //TODO
                 break;
             case PASS_BOH_STATE:
                 // stop all active negotiations

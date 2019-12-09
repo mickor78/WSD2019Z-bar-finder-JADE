@@ -22,7 +22,8 @@ public final class ParametersScore {
             boolean canWeFacilitate;
             switch (paramName) {
                 case LOCALIZATION_PARAM_NAME:
-
+                    double distance = getDistance(offer.getLocalization(), barValue);
+                    score += 1 / distance * preferencesParameter.getImportance();
                     break;
                 case BEER_PARAM_NAME:
                     canWeFacilitate = offer.getBeers().stream()
@@ -77,7 +78,6 @@ public final class ParametersScore {
             throw new IllegalArgumentException("barLocalization");
 
         double distance = getDistance(customerLocalization, barLocalization);
-
 
 
         return 0.0;
