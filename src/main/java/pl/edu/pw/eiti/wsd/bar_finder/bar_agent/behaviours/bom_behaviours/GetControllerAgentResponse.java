@@ -3,6 +3,7 @@ package pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours;
 import java.util.List;
 
 import jade.core.AID;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -16,7 +17,7 @@ import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
 
-public class GetControllerAgentResponse extends OneShotBehaviour {
+public class GetControllerAgentResponse extends CyclicBehaviour {
 
     private AID controllerAID;
     private String controllerType;
@@ -30,7 +31,7 @@ public class GetControllerAgentResponse extends OneShotBehaviour {
     @SuppressWarnings("unchecked")
     public void action() {
         try {
-            ACLMessage response = myAgent.blockingReceive(MessageTemplate.MatchSender(controllerAID));
+            ACLMessage response = myAgent.receive(MessageTemplate.MatchSender(controllerAID));
             if (response != null) {
                 switch (controllerType) {
                     case LOUDNESS_CONTROLLER_AGENT:
@@ -69,7 +70,7 @@ public class GetControllerAgentResponse extends OneShotBehaviour {
                         break;
                 }
             } else {
-                // todo
+                block();
             }
         }
         catch (UnreadableException ex)
