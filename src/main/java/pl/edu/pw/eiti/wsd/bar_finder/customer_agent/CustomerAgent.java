@@ -13,6 +13,7 @@ import pl.edu.pw.eiti.wsd.bar_finder.BarFinderAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Preferences;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.ontology.PreferencesOntology;
 import pl.edu.pw.eiti.wsd.bar_finder.customer_agent.behaviours.FindBar;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.BAR_AGENT;
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.CUSTOMER_AGENT;
@@ -37,7 +38,7 @@ public class CustomerAgent extends BarFinderAgent {
     }
 
     protected void setup() {
-        System.out.println("Hello World! My name is " + getLocalName());
+        ConsolePrintingMsgUtils.PrintMsg("Hello World! My name is " + getLocalName());
 
         // Get agent parameters
         Object[] args = getArguments();

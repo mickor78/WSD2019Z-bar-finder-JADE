@@ -5,13 +5,14 @@ import java.util.Random;
 import jade.core.Agent;
 
 import pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.seats_controller_agent.behaviours.ProvideSeatsNumber;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 public class SeatsControllerAgent extends Agent {
 
     private Integer seatsNumber;
 
     protected void setup() {
-        System.out.println("Hello World! My name is " + getLocalName());
+        ConsolePrintingMsgUtils.PrintMsg("Hello World! My name is " + getLocalName());
 
         // Get agent parameters
         Object[] args = getArguments();

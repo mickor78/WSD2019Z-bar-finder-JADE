@@ -6,6 +6,7 @@ import jade.core.Agent;
 
 import pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.resources_controller_agent.behaviours.ProvideResourcesInfo;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.BarBeer;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 public class ResourcesControllerAgent extends Agent {
 
@@ -13,7 +14,7 @@ public class ResourcesControllerAgent extends Agent {
 
     @SuppressWarnings("unchecked")
     protected void setup() {
-        System.out.println("Hello World! My name is " + getLocalName());
+        ConsolePrintingMsgUtils.PrintMsg("Hello World! My name is " + getLocalName());
 
         // Get agent parameters
         Object[] args = getArguments();

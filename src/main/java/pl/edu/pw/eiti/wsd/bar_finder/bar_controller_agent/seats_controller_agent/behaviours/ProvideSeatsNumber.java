@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+
 import pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.seats_controller_agent.SeatsControllerAgent;
 
 public class ProvideSeatsNumber extends CyclicBehaviour {

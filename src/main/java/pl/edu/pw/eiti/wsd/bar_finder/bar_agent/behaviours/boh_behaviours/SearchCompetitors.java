@@ -1,63 +1,73 @@
 package pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.boh_behaviours;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 import jade.core.AID;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
+
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.BarAgent;
-import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.common_behaviours.Negotiations;
+import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BestOfferHolder;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
-import java.util.List;
-
-import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.BAR_AGENT_ROLE_BOH;
+import static pl.edu.pw.eiti.wsd.bar_finder.utilities.GuidUtils.GetGuid;
+import static pl.edu.pw.eiti.wsd.bar_finder.utilities.JadeUtils.sendMessage;
 
 public class SearchCompetitors extends Behaviour {
-    private int step = 0;
-    private int receivedResponses = 0;
-    private int expectedResponses = 0;
 
+    private int attemptsCounter;
+
+    public SearchCompetitors() { }
+
+    @Override
     public void action() {
-        switch (step) {
-            case 0:
-                ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
-                List<AID> receivers = getParentB().getNearbyBars();
-                expectedResponses = receivers.size();
-                System.out.println(myAgent.getLocalName() + " - found bars nearby:" + expectedResponses);
-                if (expectedResponses == 0) {
-                    // no more nearby bars, send return best offer to client?
-                    step = 2;
-                } else {
-                    for (AID receiver : receivers) {
-                        cfp.addReceiver(receiver);
-                    }
-                    cfp.setConversationId("start_negotiations");
-                    myAgent.send(cfp);
-                    step = 1;
-                }
-                break;
-            case 1:
-                ACLMessage response = myAgent.receive(MessageTemplate.MatchConversationId("start_negotiations"));
-                if (response != null) {
-                    getParentB().addSubBehaviour(new Negotiations(BAR_AGENT_ROLE_BOH, myAgent.getLocalName() + response.getSender().getLocalName(), response.getSender()));
-                    receivedResponses++;
-                    if (receivedResponses == expectedResponses)
-                        step = 2;
-                } else {
-                    block();
-                }
-                break;
+        List<AID> competitors = getCompetitors();
+        BestOfferHolder boh = getBOH();
+        if (competitors != null && competitors.size() > 0) {
+            competitors.forEach(c -> {
+                String conversationId = GetGuid();
+                boh.getCompetitors().put(conversationId, c);
+                getParentBehaviour().addSubBehaviour(new Negotiations(conversationId, c));
+            });
+
+            HashMap<String, AID> receivers = boh.getCompetitors();
+            BarAgent barAgent = getAgent();
+            ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - sends CFP messages to competitors.",
+                myAgent.getLocalName()));
+            // TODO: Do przemyślenia aspekt komunikacji, gdy mamy wiele BOH i jest możliwa komunikacja BOH - BOH
+            // TODO: Jakieś ograniczenie na wysylanie z jednej strony - ale jak?
+            sendMessage(myAgent, ACLMessage.CFP, receivers, barAgent.getCodec(),
+                barAgent.getPreferencesOntology(), getBOH().getCustomerPreferences());
         }
+
+        attemptsCounter++;
     }
 
+    @Override
     public boolean done() {
-        return step == 2;
+        return getBOH().getCompetitors().size() > 0 || attemptsCounter == 3;
     }
 
     public BarAgent getAgent() {
         return (BarAgent) myAgent;
     }
 
-    public StartNegotiations getParentB() {
-        return (StartNegotiations) getParent();
+    private List<AID> getCompetitors() {
+        List<AID> result = new LinkedList<>(getAgent().getNearbyBars());
+        if (getBOH().getDefeatedCompetitors() != null) {
+            result.removeAll(getBOH().getDefeatedCompetitors());
+        }
+        return result;
+    }
+
+    private BestOfferHolder getBOH() {
+        return (BestOfferHolder)root();
+    }
+
+    private StartNegotiations getParentBehaviour() {
+        return (StartNegotiations)getParent();
+
     }
 }

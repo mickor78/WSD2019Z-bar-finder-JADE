@@ -1,21 +1,23 @@
 package pl.edu.pw.eiti.wsd.bar_finder.bar_agent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import jade.content.lang.Codec;
 import jade.content.lang.sl.SLCodec;
 import jade.content.onto.Ontology;
 import jade.core.AID;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+
 import pl.edu.pw.eiti.wsd.bar_finder.BarFinderAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BarOfferManager;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Bar;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.BarBeer;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.ontology.PreferencesOntology;
 import pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderAgentNameUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
 
@@ -90,7 +92,7 @@ public class BarAgent extends BarFinderAgent {
     }
 
     protected void setup() {
-        System.out.println("Hello World! My name is " + getLocalName());
+        ConsolePrintingMsgUtils.PrintMsg("Hello World! My name is " + getLocalName());
 
         // Get agent parameters
         Object[] args = getArguments();
@@ -111,14 +113,14 @@ public class BarAgent extends BarFinderAgent {
             getContentManager().registerOntology(preferencesOntology);
 
             loudnessControllerAgentAID = new AID(
-                    BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), LOUDNESS_CONTROLLER_AGENT_NAME),
-                    AID.ISLOCALNAME);
+                BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), LOUDNESS_CONTROLLER_AGENT_NAME),
+                AID.ISLOCALNAME);
             seatsControllerAgentAID = new AID(
-                    BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), SEATS_CONTROLLER_AGENT_NAME),
-                    AID.ISLOCALNAME);
+                BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), SEATS_CONTROLLER_AGENT_NAME),
+                AID.ISLOCALNAME);
             resourcesControllerAgentAID = new AID(
-                    BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), RESOURCES_CONTROLLER_AGENT_NAME),
-                    AID.ISLOCALNAME);
+                BarFinderAgentNameUtils.GetBarControllerName(bar.getName(), RESOURCES_CONTROLLER_AGENT_NAME),
+                AID.ISLOCALNAME);
 
             addBehaviour(new BarOfferManager());
         }

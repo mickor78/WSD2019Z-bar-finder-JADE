@@ -1,6 +1,5 @@
 package pl.edu.pw.eiti.wsd.bar_finder.customer_agent.behaviours;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,12 +19,14 @@ public class FindBar extends OneShotBehaviour {
         // TODO: Limit bars count.
         for (AID aid : getAgent().getBars()) {
             receivers.add(aid);
-            ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " - " + "receiver found: " + aid.getLocalName());
+            ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " (customer) - " + "receiver found: " + aid.getLocalName());
         }
 
         CustomerAgent customerAgent = getAgent();
-        sendMessage(customerAgent, ACLMessage.INFORM, receivers, customerAgent.getCodec(), customerAgent.getOntology(),
-                customerAgent.getPreferences());
+        // TODO: Do zastanowienia jaka performatywa?
+        ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " (customer) - " + "sends preferences to bars.");
+        sendMessage(customerAgent, ACLMessage.REQUEST, receivers, customerAgent.getCodec(), customerAgent.getOntology(),
+            customerAgent.getPreferences());
         myAgent.addBehaviour(new AwaitOffers());
     }
 

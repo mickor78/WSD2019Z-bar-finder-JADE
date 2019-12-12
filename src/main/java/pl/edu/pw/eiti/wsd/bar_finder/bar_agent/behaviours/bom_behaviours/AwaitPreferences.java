@@ -14,6 +14,8 @@ import jade.lang.acl.MessageTemplate;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.BarAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BestOfferHolder;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Preferences;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.PreferencesDictionary;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.score.ParametersScore;
 import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.mappers.PreferencesMapper.Map;
@@ -22,9 +24,9 @@ public class AwaitPreferences extends CyclicBehaviour {
 
     @Override
     public void action() {
-        ACLMessage msg = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchPerformative(ACLMessage.INFORM),
+        ACLMessage msg = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchPerformative(ACLMessage.REQUEST),
                 MessageTemplate.and(MessageTemplate.MatchLanguage(getAgent().getCodec().getName()),
-                        MessageTemplate.MatchOntology(getAgent().getPreferencesOntology().getName()))));
+                    MessageTemplate.MatchOntology(getAgent().getPreferencesOntology().getName()))));
         try {
             if (msg != null) {
                 AID customerAID = msg.getSender();
@@ -35,23 +37,33 @@ public class AwaitPreferences extends CyclicBehaviour {
                     if (concept instanceof Preferences) {
                         Preferences customerPreferences = (Preferences) concept;
                         if (!customerPreferences.getPreferencesParameters().isEmpty()) {
-                            ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " + msg.getSender().getLocalName()
-                                    + " :\n" + customerPreferences.toString());
-                            myAgent.addBehaviour(new BestOfferHolder(customerAID, Map(customerPreferences)));
+                            ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " (BOM) - receives from " + msg.getSender().getLocalName()
+                                + ":\n" + customerPreferences.toString());
+                            double score = 0.0;
+                            // TODO: Do zastanowienia, czy lepiej mapowanie i dict, czy bez mapowania, ale sprawdzanie ciągłe,
+                            //  czy dany parametr należy do zdefiniowanych parametrów.
+                            PreferencesDictionary preferencesDictionary = Map(customerPreferences);
+                            if (preferencesDictionary != null) {
+                                // TODO: ParametersScore.score() jako metoda statyczna
+                                score = new ParametersScore().score(preferencesDictionary, getAgent().getBar());
+                                ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - score for customer %s: %f.",
+                                        myAgent.getLocalName(), customerAID.getLocalName(), score));
+                            }
+                            myAgent.addBehaviour(new BestOfferHolder(customerAID, customerPreferences, score));
                         } else {
                             // TODO
-                            ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " + msg.getSender().getLocalName()
-                                    + " : empty customer preferences list");
+                            ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - receives empty customer preferences list from %s.",
+                                myAgent.getLocalName(), msg.getSender().getLocalName()));
                         }
                     } else {
                         // TODO
-                        ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " + msg.getSender().getLocalName()
-                                + " : wrong data");
+                        ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - receives wrong data from %s.",
+                            myAgent.getLocalName(), msg.getSender().getLocalName()));
                     }
                 } else {
                     // TODO
-                    ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " - received from " + msg.getSender().getLocalName()
-                            + " : wrong data");
+                    ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - receives wrong data from %s.",
+                        myAgent.getLocalName(), msg.getSender().getLocalName()));
                 }
             } else {
                 block();

@@ -5,11 +5,12 @@ import java.util.Random;
 import pl.edu.pw.eiti.wsd.bar_finder.BarFinderAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_controller_agent.loudness_controller_agent.behaviours.ProvideLoudnessLevel;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.Bar;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 public class LoudnessControllerAgent extends BarFinderAgent {
 
     protected void setup(){
-        System.out.println("Hello World! My name is " + getLocalName());
+        ConsolePrintingMsgUtils.PrintMsg("Hello World! My name is " + getLocalName());
 
         addBehaviour(new ProvideLoudnessLevel());
     }

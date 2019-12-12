@@ -3,8 +3,10 @@ package pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.bom_behaviours;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
+
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.BarAgent;
 import pl.edu.pw.eiti.wsd.bar_finder.bar_agent.behaviours.BarOfferManager;
+import pl.edu.pw.eiti.wsd.bar_finder.utilities.ConsolePrintingMsgUtils;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.utilities.BarFinderConstants.*;
 
@@ -28,14 +30,20 @@ public class GetBarParameters extends TickerBehaviour {
         // update bar parameters
         ACLMessage seatsQuery = new ACLMessage(ACLMessage.QUERY_REF);
         seatsQuery.addReceiver(getAgent().getSeatsControllerAgentAID());
+        ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - sends query to %s.",
+            myAgent.getLocalName(), getAgent().getSeatsControllerAgentAID().getLocalName()));
         myAgent.send(seatsQuery);
 
         ACLMessage loudnessQuery = new ACLMessage(ACLMessage.QUERY_REF);
         loudnessQuery.addReceiver(getAgent().getLoudnessControllerAgentAID());
+        ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - sends query to %s.",
+                myAgent.getLocalName(), getAgent().getSeatsControllerAgentAID().getLocalName()));
         myAgent.send(loudnessQuery);
 
         ACLMessage resourcesQuery = new ACLMessage(ACLMessage.QUERY_REF);
         resourcesQuery.addReceiver(getAgent().getResourcesControllerAgentAID());
+        ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - sends query to %s.",
+                myAgent.getLocalName(), getAgent().getSeatsControllerAgentAID().getLocalName()));
         myAgent.send(resourcesQuery);
     }
 
@@ -43,7 +51,7 @@ public class GetBarParameters extends TickerBehaviour {
         return (BarAgent) myAgent;
     }
 
-    public BarOfferManager getBOM() {
+    private BarOfferManager getBOM() {
         return (BarOfferManager) getParent();
     }
 }
