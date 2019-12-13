@@ -14,6 +14,21 @@
 		"importance": 0.40
 	  }
 	  ]
+	},
+	{
+	  "customer": "Tomasz_Chmielik",
+	  "preferences": [
+	  {
+		"name": "localization",
+		"value": "15.0;7.0",
+		"importance": 0.90
+	  },
+	  {
+		"name": "beer_price",
+		"value": 15.0,
+		"importance": 0.80
+	  }
+	  ]
 	}
 	]
 }
