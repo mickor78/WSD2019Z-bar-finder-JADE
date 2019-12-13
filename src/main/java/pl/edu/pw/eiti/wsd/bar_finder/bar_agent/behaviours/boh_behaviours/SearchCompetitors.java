@@ -34,8 +34,8 @@ public class SearchCompetitors extends Behaviour {
 
             HashMap<String, AID> receivers = boh.getCompetitors();
             BarAgent barAgent = getAgent();
-            ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - sends CFP messages to competitors.",
-                myAgent.getLocalName()));
+            ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - sends CFP messages to %d competitors.",
+                myAgent.getLocalName(), receivers.size()));
             // TODO: Do przemyślenia aspekt komunikacji, gdy mamy wiele BOH i jest możliwa komunikacja BOH - BOH
             // TODO: Jakieś ograniczenie na wysylanie z jednej strony - ale jak?
             sendMessage(myAgent, ACLMessage.CFP, receivers, barAgent.getCodec(),
