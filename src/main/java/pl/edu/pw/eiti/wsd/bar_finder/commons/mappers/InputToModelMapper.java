@@ -35,7 +35,7 @@ public final class InputToModelMapper {
             return null;
 
         String name = input.getName();
-        String localization = input.getName();
+        String localization = input.getLocalization();
         Integer seatsNumber = input.getSeatsNumber();
         boolean isLoudnessLevelController = input.isLoudnessController();
         boolean isSeatsController = input.isSeatsController();

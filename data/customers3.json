@@ -1,0 +1,64 @@
+{
+  "customers_preferences": [
+    {
+      "customer": "Jan_Krafciarz",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "10.0;10.0",
+          "importance": 0.80
+        },
+        {
+          "name": "beer_style",
+          "value": "AMERICAN_PALE_ALE",
+          "importance": 0.40
+        }
+      ]
+    },
+    {
+      "customer": "Tomasz_Chmielik",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "15.0;7.0",
+          "importance": 0.90
+        },
+        {
+          "name": "beer_price",
+          "value": 15.0,
+          "importance": 0.80
+        }
+      ]
+    },
+    {
+      "customer": "Grzegorz_Chmielik",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "12.0;0.0",
+          "importance": 0.30
+        },
+        {
+          "name": "beer_price",
+          "value": 10.0,
+          "importance": 0.70
+        },
+        {
+          "name": "beer_style",
+          "value": "GERMAN_PILSNER",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_loudness_level",
+          "value": "NOISE",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_free_seats",
+          "value": 10,
+          "importance": 0.50
+        }
+      ]
+    }
+  ]
+}

@@ -19,47 +19,106 @@ public final class ParametersScore {
             if (Objects.isNull(preferencesParameter)) continue;
             String barValue = preferencesParameter.getValue();
 
-            boolean canWeFacilitate;
+            double desiredQuantity = 10.0;
+            List<BarBeer> beerList;
+
             switch (paramName) {
                 case LOCALIZATION_PARAM_NAME:
                     double distance = getDistance(offer.getLocalization(), barValue);
-                    score += 1 / distance * preferencesParameter.getImportance();
+                    if(distance < 1000)
+                        score += (1 - 0.0005 * distance) * preferencesParameter.getImportance();
+                    else if(distance < 5000)
+                        score += 0.5 * preferencesParameter.getImportance();
                     break;
+
                 case BEER_PARAM_NAME:
-                    canWeFacilitate = offer.getBeers().stream()
-                            .map(BarBeer::getName)
-                            .anyMatch(name -> name.equalsIgnoreCase(barValue));
-                    if (canWeFacilitate)
-                        score += preferencesParameter.getImportance();
+                    double styleQuantity = 0, actualQuantity = 0;
+                    beerList = offer.getBeers();
+                    for (BarBeer beer: beerList) {
+                        if(beer.getName().equalsIgnoreCase(barValue)) {
+                            actualQuantity = beer.getQuantity();
+                            if (actualQuantity > desiredQuantity) {
+                                score += preferencesParameter.getImportance();
+                                break;
+                            }
+                        }
+                    }
                     break;
                 case BEER_STYLE_PARAM_NAME:
-                    canWeFacilitate = offer.getBeers().stream()
-                            .map(BarBeer::getStyle)
-                            .map(BarBeer.BeerStyle::name)
-                            .anyMatch(name -> name.equalsIgnoreCase(barValue));
-                    if (canWeFacilitate)
+                    styleQuantity = 0;
+                    beerList = offer.getBeers();
+                    for (BarBeer beer : beerList) {
+                        if (beer.getStyle().toString().equalsIgnoreCase(barValue)) {
+                            styleQuantity += beer.getQuantity();
+                        }
+                    }
+                    if (styleQuantity > desiredQuantity) {
                         score += preferencesParameter.getImportance();
+                    }
                     break;
                 case BEER_PRICE_PARAM_NAME:
                     long numerOfCheapEnoughBeers = offer.getBeers().stream()
                             .map(BarBeer::getPrice)
                             .filter(price -> price < Double.valueOf(barValue))
                             .count();
-                    long allBearsInOffer = offer.getBeers().size();
-                    score += preferencesParameter.getImportance()
-                            * (double) numerOfCheapEnoughBeers / allBearsInOffer;
+                    if (numerOfCheapEnoughBeers == 0)
+                        break;
+                    else if (numerOfCheapEnoughBeers == 1) {
+                        score += 0.5 * preferencesParameter.getImportance();
+                        break;
+                    }
+                    else if (numerOfCheapEnoughBeers <= 3) {
+                        score += 0.8 * preferencesParameter.getImportance();
+                        break;
+                    }
+                    else
+                        score += preferencesParameter.getImportance();
                     break;
                 case BAR_LOUDNESS_LEVEL_PARAM_NAME:
-                    canWeFacilitate = barValue.equalsIgnoreCase(offer
-                            .getLoudnessLevel().name());
-                    if (canWeFacilitate)
-                        score += preferencesParameter.getImportance();
-                    break;
+                    Bar.LoudnessLevel actualLoudness = offer.getLoudnessLevel();
+                    String desiredLoudness = barValue;
+                    switch(desiredLoudness) {
+                        case "QUIET":
+                            switch (actualLoudness) {
+                                case QUIET:
+                                    score += preferencesParameter.getImportance();
+                                    break;
+                                case MEDIUM:
+                                    score += 0.5 * preferencesParameter.getImportance();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        case "MEDIUM":
+                            switch (actualLoudness) {
+                                case MEDIUM:
+                                    score += preferencesParameter.getImportance();
+                                    break;
+                                default:
+                                    score += 0.5 * preferencesParameter.getImportance();
+                                    break;
+                            }
+                        case "NOISE":
+                            switch (actualLoudness) {
+                                case NOISE:
+                                    score += preferencesParameter.getImportance();
+                                    break;
+                                case MEDIUM:
+                                    score += 0.5 * preferencesParameter.getImportance();
+                                    break;
+                                default:
+                                    break;
+                            }
+                    }
                 case BAR_FREE_SEATS_PARAM_NAME:
-                    int freeSeats = offer.getFreeSeats();
-                    canWeFacilitate = Integer.valueOf(barValue) < freeSeats;
-                    if (canWeFacilitate)
-                        score += preferencesParameter.getImportance();
+                    if(offer.getFreeSeats() != null) {
+                        int freeSeats = offer.getFreeSeats();
+                        int desiredSeats = Integer.valueOf(barValue);
+                        if (freeSeats >= 2 * desiredSeats)
+                            score += preferencesParameter.getImportance();
+                        else if (freeSeats >= desiredSeats)
+                            score += 0.5 * preferencesParameter.getImportance();
+                    }
                     break;
             }
         }
