@@ -6,13 +6,11 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarBeerData;
-import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData;
-import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData;
-import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesParameterData;
+import pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.*;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarBeerData.*;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.BarData.*;
+import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.RegionData.*;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData.CUSTOMER_KEY;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesData.PREFERENCES_KEY;
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.input_structures.PreferencesParameterData.*;
@@ -42,13 +40,44 @@ public final class JsonUtils {
 
         String name = (String)data.get(BAR_NAME_KEY);
         String localization = (String)data.get(BAR_LOCALIZATION_KEY);
+        String region = (String)data.get(BAR_REGION_KEY);
         List<BarBeerData> beers = GetBeers((JSONArray)data.get(BAR_BEERS_KEY));
         Integer seatsNumber = ((Long)data.get(BAR_SEATS_NUMBER_KEY)).intValue();
         boolean isLoudnessController = (Boolean)data.get(BAR_IS_LOUDNESS_CONTROLLER_KEY);
         boolean isSeatsController = (Boolean)data.get(BAR_IS_SEATS_CONTROLLER_KEY);
 
         if (name != null && !name.isEmpty())
-            return new BarData(name, localization, beers, seatsNumber, isLoudnessController, isSeatsController);
+            return new BarData(name, localization, region, beers, seatsNumber, isLoudnessController, isSeatsController);
+
+        return null;
+    }
+
+    public static List<RegionData> GetRegions(JSONArray data)
+    {
+        List<RegionData> result = new LinkedList<>();
+
+        if (data != null && !data.isEmpty())
+        {
+            data.forEach(obj -> {
+                RegionData region = GetRegion((JSONObject)obj);
+                if (region != null)
+                    result.add(region);
+            });
+        }
+
+        return result;
+    }
+
+    public static RegionData GetRegion(JSONObject data)
+    {
+        if (data == null || data.isEmpty())
+            return null;
+
+        String name = (String)data.get(REGION_NAME_KEY);
+        String localization = (String)data.get(REGION_LOCALIZATION_KEY);
+
+        if (name != null && !name.isEmpty())
+            return new RegionData(name, localization);
 
         return null;
     }

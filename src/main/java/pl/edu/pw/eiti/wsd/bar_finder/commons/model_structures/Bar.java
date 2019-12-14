@@ -8,6 +8,7 @@ public class Bar implements Serializable {
 
     private String name;
     private String localization;
+    private String region;
     private List<BarBeer> beers;
     private boolean isLoudnessController = true;
     private boolean isSeatsController = true;
@@ -18,19 +19,21 @@ public class Bar implements Serializable {
         this.beers = new ArrayList<>();
     }
 
-    public Bar(String name, String localization, Integer seatsNumber, boolean isLoudnessController, boolean isSeatsController) {
+    public Bar(String name, String localization, String region, Integer seatsNumber, boolean isLoudnessController, boolean isSeatsController) {
         setName(name);
         setLocalization(localization);
+        setRegion(region);
         this.beers = new ArrayList<>();
         setSeatsNumber(seatsNumber);
         setIsLoudnessController(isLoudnessController);
         setIsSeatsController(isSeatsController);
     }
 
-    public Bar(String name, String localization, List<BarBeer> beers, Integer seatsNumber,
+    public Bar(String name, String localization, String region, List<BarBeer> beers, Integer seatsNumber,
                boolean isLoudnessController, boolean isSeatsController) {
         setName(name);
         setLocalization(localization);
+        setRegion(region);
         setBeers(beers);
         setSeatsNumber(seatsNumber);
         setIsLoudnessController(isLoudnessController);
@@ -51,6 +54,14 @@ public class Bar implements Serializable {
 
     public void setLocalization(String localization) {
         this.localization = localization;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public List<BarBeer> getBeers() {

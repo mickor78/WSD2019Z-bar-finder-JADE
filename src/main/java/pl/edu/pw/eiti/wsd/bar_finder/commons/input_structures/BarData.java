@@ -7,6 +7,7 @@ public class BarData {
     public final static String BARS_KEY = "bars";
     public final static String BAR_NAME_KEY = "name";
     public final static String BAR_LOCALIZATION_KEY = "localization";
+    public final static String BAR_REGION_KEY = "region";
     public final static String BAR_BEERS_KEY = "beers";
     public final static String BAR_SEATS_NUMBER_KEY = "seats_number";
     public final static String BAR_IS_LOUDNESS_CONTROLLER_KEY = "loudness_controller";
@@ -14,6 +15,7 @@ public class BarData {
 
     private String name;
     private String localization;
+    private String region;
     private List<BarBeerData> beers;
     private Integer seatsNumber;
     private boolean isLoudnessController = true;
@@ -22,17 +24,19 @@ public class BarData {
     public BarData() {
     }
 
-    public BarData(String name, String localization, List<BarBeerData> beers, Integer seatsNumber) {
+    public BarData(String name, String localization, String region, List<BarBeerData> beers, Integer seatsNumber) {
         setName(name);
         setLocalization(localization);
+        setRegion(region);
         setBeers(beers);
         setSeatsNumber(seatsNumber);
     }
 
-    public BarData(String name, String localization, List<BarBeerData> beers, Integer seatsNumber,
+    public BarData(String name, String localization, String region, List<BarBeerData> beers, Integer seatsNumber,
                    boolean isLoudnessController, boolean isSeatsController) {
         setName(name);
         setLocalization(localization);
+        setRegion(region);
         setBeers(beers);
         setSeatsNumber(seatsNumber);
         setIsLoudnessController(isLoudnessController);
@@ -53,6 +57,14 @@ public class BarData {
 
     public void setLocalization(String localization) {
         this.localization = localization;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public List<BarBeerData> getBeers() {

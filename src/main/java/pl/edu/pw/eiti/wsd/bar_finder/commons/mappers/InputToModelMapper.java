@@ -36,14 +36,15 @@ public final class InputToModelMapper {
 
         String name = input.getName();
         String localization = input.getLocalization();
+        String region = input.getRegion();
         Integer seatsNumber = input.getSeatsNumber();
         boolean isLoudnessLevelController = input.isLoudnessController();
         boolean isSeatsController = input.isSeatsController();
 
-        if (name == null || name.isEmpty() || localization == null || localization.isEmpty())
+        if (name == null || name.isEmpty() || localization == null || localization.isEmpty() || region == null || region.isEmpty())
             return null;
 
-        Bar bar = new Bar(name, localization, seatsNumber, isLoudnessLevelController, isSeatsController);
+        Bar bar = new Bar(name, localization, region, seatsNumber, isLoudnessLevelController, isSeatsController);
 
         List<BarBeerData> inputBeers = input.getBeers();
         if (inputBeers != null && !inputBeers.isEmpty()) {
