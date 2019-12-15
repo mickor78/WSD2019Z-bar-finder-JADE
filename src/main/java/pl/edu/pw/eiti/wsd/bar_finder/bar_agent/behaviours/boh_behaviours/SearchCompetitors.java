@@ -29,7 +29,7 @@ public class SearchCompetitors extends Behaviour {
             competitors.forEach(c -> {
                 String conversationId = GetGuid();
                 boh.getCompetitors().put(conversationId, c);
-                getParentBehaviour().addSubBehaviour(new Negotiations(conversationId, c));
+                getParentBehaviour().addSubBehaviour(new NegotiationsGetOffer(conversationId, c));
             });
 
             HashMap<String, AID> receivers = boh.getCompetitors();
