@@ -15,7 +15,7 @@ public final class ParametersScore {
         double score = 0.0;
         BeerMap beerMap = new BeerMap();
         PreferencesParameter beerParam = preferencesParams.get(BEER_PARAM_NAME);
-        boolean isBeer = !(Objects.isNull(beerParam));
+        boolean isBeer = false;
         for (String paramName : ParametersNames.ALL
         ) {
             PreferencesParameter preferencesParameter = preferencesParams.get(paramName);
@@ -42,10 +42,12 @@ public final class ParametersScore {
                             actualQuantity = beer.getQuantity();
                             if (actualQuantity >= desiredQuantity) {
                                 score += 5 * preferencesParameter.getImportance();
+                                isBeer = true;
                                 break;
                             }
                             else if (actualQuantity >= 0.3 * desiredQuantity) {
                                 score += 5 * (10 / (7 * desiredQuantity) * actualQuantity - 3 / 7) * preferencesParameter.getImportance();
+                                isBeer = true;
                                 break;
                             }
                         }
