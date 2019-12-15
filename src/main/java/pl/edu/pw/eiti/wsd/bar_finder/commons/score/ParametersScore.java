@@ -3,6 +3,7 @@ package pl.edu.pw.eiti.wsd.bar_finder.commons.score;
 import pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static pl.edu.pw.eiti.wsd.bar_finder.commons.model_structures.ParametersNames.*;
@@ -10,9 +11,11 @@ import static pl.edu.pw.eiti.wsd.bar_finder.utilities.CoordinationUtils.getDista
 
 public final class ParametersScore {
 
-    // TODO
     public double score(PreferencesDictionary preferencesParams, Bar offer) {
         double score = 0.0;
+        BeerMap beerMap = new BeerMap();
+        PreferencesParameter beerParam = preferencesParams.get(BEER_PARAM_NAME);
+        boolean isBeer = !(Objects.isNull(beerParam));
         for (String paramName : ParametersNames.ALL
         ) {
             PreferencesParameter preferencesParameter = preferencesParams.get(paramName);
@@ -32,28 +35,55 @@ public final class ParametersScore {
                     break;
 
                 case BEER_PARAM_NAME:
-                    double styleQuantity = 0, actualQuantity = 0;
+                    double actualQuantity = 0.0;
                     beerList = offer.getBeers();
                     for (BarBeer beer: beerList) {
                         if(beer.getName().equalsIgnoreCase(barValue)) {
                             actualQuantity = beer.getQuantity();
-                            if (actualQuantity > desiredQuantity) {
-                                score += preferencesParameter.getImportance();
+                            if (actualQuantity >= desiredQuantity) {
+                                score += 5 * preferencesParameter.getImportance();
+                                break;
+                            }
+                            else if (actualQuantity >= 0.3 * desiredQuantity) {
+                                score += 5 * (10 / (7 * desiredQuantity) * actualQuantity - 3 / 7) * preferencesParameter.getImportance();
                                 break;
                             }
                         }
                     }
                     break;
                 case BEER_STYLE_PARAM_NAME:
-                    styleQuantity = 0;
-                    beerList = offer.getBeers();
-                    for (BarBeer beer : beerList) {
-                        if (beer.getStyle().toString().equalsIgnoreCase(barValue)) {
-                            styleQuantity += beer.getQuantity();
+                    if(!isBeer){
+                        Map<BeerMap.BeerStyle, BeerMap.BeerGroup>  beerStyles = beerMap.getMap();
+                        double styleScore = 0.0;
+                        double similarScore = 0.0;
+                        List<BeerMap.BeerStyle> similarBeerList;
+                        beerList = offer.getBeers();
+                        for (BarBeer beer : beerList) {
+                            if (beer.getStyle().toString().equalsIgnoreCase(barValue)) {
+                                if (beer.getQuantity() > desiredQuantity) {
+                                    styleScore += 1;
+                                }
+                                else if (beer.getQuantity() >= 0.3 * desiredQuantity) {
+                                    styleScore += (10 / (7 * desiredQuantity) * beer.getQuantity() - 3 / 7);
+                                }
+                            }
                         }
-                    }
-                    if (styleQuantity > desiredQuantity) {
-                        score += preferencesParameter.getImportance();
+                        similarBeerList = beerMap.getSimilar(BeerMap.BeerStyle.valueOf(barValue));
+                        for(BeerMap.BeerStyle similarBeer : similarBeerList){
+                            for(BarBeer beer : beerList){
+                                if(beer.getStyle() == similarBeer && beer.getStyle() != BeerMap.BeerStyle.valueOf(barValue)){
+                                    if (beer.getQuantity() >= desiredQuantity) {
+                                        similarScore += 0.3;
+                                    }
+                                    else if (beer.getQuantity() >= 0.3 * desiredQuantity) {
+                                        similarScore += 0.3 * (10 / (7 * desiredQuantity) * beer.getQuantity() - 3 / 7);
+                                    }
+                                }
+                            }
+                        }
+                        if(styleScore >= 3) styleScore = 3 ;
+                        if(similarScore >= 1) similarScore = 1;
+                        score += (styleScore + similarScore) * preferencesParameter.getImportance();
                     }
                     break;
                 case BEER_PRICE_PARAM_NAME:
@@ -123,22 +153,5 @@ public final class ParametersScore {
             }
         }
         return score;
-    }
-
-    // TODO
-    private double getLocalizationScore(String customerLocalization, String barLocalization) {
-        if (customerLocalization == null)
-            throw new NullPointerException("customerLocalization");
-        if (customerLocalization.isEmpty())
-            throw new IllegalArgumentException("customerLocalization");
-        if (barLocalization == null)
-            throw new NullPointerException("barLocalization");
-        if (barLocalization.isEmpty())
-            throw new IllegalArgumentException("barLocalization");
-
-        double distance = getDistance(customerLocalization, barLocalization);
-
-
-        return 0.0;
     }
 }

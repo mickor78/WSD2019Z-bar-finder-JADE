@@ -13,7 +13,7 @@ public final class InputToModelMapper {
 
         String name = input.getName();
         String breweryName = input.getBreweryName();
-        BarBeer.BeerStyle beerStyle = BarBeer.BeerStyle.UNKNOWN;
+        BeerMap.BeerStyle beerStyle = BeerMap.BeerStyle.UNKNOWN;
         double price = input.getPrice();
         double quantity = input.getQuantity();
 
@@ -22,7 +22,7 @@ public final class InputToModelMapper {
 
         try {
             if (input.getStyle() != null)
-                beerStyle = BarBeer.BeerStyle.valueOf(input.getStyle());
+                beerStyle = BeerMap.BeerStyle.valueOf(input.getStyle());
         } catch (IllegalArgumentException ignored) {
             // TODO: Logging.
         }
