@@ -40,11 +40,10 @@ public class AwaitPreferences extends CyclicBehaviour {
                             ConsolePrintingMsgUtils.PrintMsg(myAgent.getLocalName() + " (BOM) - receives from " + msg.getSender().getLocalName()
                                 + ":\n" + customerPreferences.toString());
                             double score = 0.0;
-                            // TODO: Do zastanowienia, czy lepiej mapowanie i dict, czy bez mapowania, ale sprawdzanie ciągłe,
-                            //  czy dany parametr należy do zdefiniowanych parametrów.
+                            // TODO: Without mapping?
                             PreferencesDictionary preferencesDictionary = Map(customerPreferences);
                             if (preferencesDictionary != null) {
-                                // TODO: ParametersScore.score() jako metoda statyczna
+                                // TODO: ParametersScore - static?
                                 score = new ParametersScore().score(preferencesDictionary, getAgent().getBar());
                                 ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - score for customer %s: %f.",
                                         myAgent.getLocalName(), customerAID.getLocalName(), score));

@@ -18,7 +18,7 @@ public class ProvideBestOffer extends OneShotBehaviour {
         if (customerAID != null) {
             ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH) - sends offer to customer %s.",
                 myAgent.getLocalName(), customerAID.getLocalName()));
-            // TODO: Może coś więcej, a nie tylko score?
+            // TODO: Not only score?
             sendMessage(myAgent, ACLMessage.INFORM, null, customerAID, score);
         }
     }

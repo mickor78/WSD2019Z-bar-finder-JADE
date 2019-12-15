@@ -16,14 +16,13 @@ public class FindBar extends OneShotBehaviour {
     @Override
     public void action() {
         List<AID> receivers = new LinkedList<>();
-        // TODO: Limit bars count.
+
         for (AID aid : getAgent().getBars()) {
             receivers.add(aid);
             ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " (customer) - " + "receiver found: " + aid.getLocalName());
         }
 
         CustomerAgent customerAgent = getAgent();
-        // TODO: Do zastanowienia jaka performatywa?
         ConsolePrintingMsgUtils.PrintMsg(getAgent().getLocalName() + " (customer) - " + "sends preferences to bars.");
         sendMessage(customerAgent, ACLMessage.REQUEST, receivers, customerAgent.getCodec(), customerAgent.getOntology(),
             customerAgent.getPreferences());

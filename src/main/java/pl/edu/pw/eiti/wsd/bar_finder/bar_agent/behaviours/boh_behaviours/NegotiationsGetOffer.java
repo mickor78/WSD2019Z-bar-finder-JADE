@@ -42,7 +42,7 @@ public class NegotiationsGetOffer extends Behaviour {
                         getBOH().getCompetitorsScores().put(competitorScore, conversationId);
                         awaitOffer = false;
                     } else {
-                        // TODO: Not understand
+                        // TODO: Not understood
                     }
                 } catch (UnreadableException e) {
                     // TODO:

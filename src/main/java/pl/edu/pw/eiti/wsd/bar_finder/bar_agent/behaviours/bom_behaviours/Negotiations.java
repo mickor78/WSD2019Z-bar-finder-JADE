@@ -90,7 +90,7 @@ public class Negotiations extends Behaviour {
                                 }
                             }
                             else {
-                                // TODO: Not understand
+                                // TODO: Not understood
                             }
                         } catch (UnreadableException e) {
                             // TODO:
