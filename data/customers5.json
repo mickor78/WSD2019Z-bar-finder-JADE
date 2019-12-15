@@ -1,0 +1,124 @@
+{
+  "customers_preferences": [
+    {
+      "customer": "Jan_Krafciarz",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.143321;21.051576",
+          "importance": 0.80
+        },
+        {
+          "name": "beer",
+          "value": "Bard",
+          "importance": 0.40
+        }
+      ]
+    },
+    {
+      "customer": "Tomasz_Chmielik",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.229606;20.915686",
+          "importance": 0.90
+        },
+        {
+          "name": "beer_price",
+          "value": 15.0,
+          "importance": 0.80
+        }
+      ]
+    },
+    {
+      "customer": "Grzegorz_Chmielik",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.231164;20.902442",
+          "importance": 0.30
+        },
+        {
+          "name": "beer_price",
+          "value": 10.0,
+          "importance": 0.70
+        },
+        {
+          "name": "beer_style",
+          "value": "BOHEMIAN_PILSNER",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_loudness_level",
+          "value": "NOISE",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_free_seats",
+          "value": 10,
+          "importance": 0.50
+        }
+      ]
+    },
+    {
+      "customer": "Grzegorz_Chmielik2",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.229284;21.014450",
+          "importance": 0.30
+        },
+        {
+          "name": "beer",
+          "value": "Miękkie lądowanie",
+          "importance": 0.70
+        },
+        {
+          "name": "beer_style",
+          "value": "GERMAN_PILSNER",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_loudness_level",
+          "value": "NOISE",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_free_seats",
+          "value": 10,
+          "importance": 0.50
+        }
+      ]
+    },
+    {
+      "customer": "Grzegorz_Chmielik3",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.229476;21.014919",
+          "importance": 0.30
+        },
+        {
+          "name": "beer",
+          "value": "Takie, którego nie ma",
+          "importance": 0.70
+        },
+        {
+          "name": "beer_style",
+          "value": "GERMAN_PILSNER",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_loudness_level",
+          "value": "NOISE",
+          "importance": 0.70
+        },
+        {
+          "name": "bar_free_seats",
+          "value": 10,
+          "importance": 0.50
+        }
+      ]
+    }
+  ]
+}

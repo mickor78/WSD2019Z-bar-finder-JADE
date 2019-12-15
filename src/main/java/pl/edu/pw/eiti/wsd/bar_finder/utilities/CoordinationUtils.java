@@ -19,7 +19,7 @@ public final class CoordinationUtils {
         Point coords1 = getCoords(coordsText1);
         Point coords2 = getCoords(coordsText2);
 
-        return Math.hypot(coords1.getX() - coords2.getX(), coords1.getY() - coords2.getY());
+        return Math.hypot(111196.672 * (coords1.getX() - coords2.getX()), 111196.672 * (coords1.getY() - coords2.getY()));
     }
 
     private static Point getCoords(String coords) {
