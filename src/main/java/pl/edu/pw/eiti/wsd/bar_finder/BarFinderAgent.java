@@ -3,13 +3,16 @@ package pl.edu.pw.eiti.wsd.bar_finder;
 import jade.core.Agent;
 import jade.core.AID;
 
+import jade.core.Service;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.*;
 import jade.domain.FIPAException;
 
+import java.util.ArrayList;
+
 public class BarFinderAgent extends Agent {
 
-    protected void register( ServiceDescription sd) {
+    protected void register( ArrayList<ServiceDescription> sds) {
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
 
@@ -17,12 +20,26 @@ public class BarFinderAgent extends Agent {
             DFAgentDescription list[] = DFService.search( this, dfd );
             if (list.length > 0)
                 DFService.deregister(this);
+            for(ServiceDescription sd : sds){
+                dfd.addServices(sd);
+            }
 
-            dfd.addServices(sd);
             DFService.register(this,dfd);
         }catch (FIPAException fe) {
             fe.printStackTrace();
         }
+    }
+
+    protected void registerToService(String[] services){
+        ArrayList<ServiceDescription> sds = new ArrayList<>();
+        for(String service : services){
+            ServiceDescription sd = new ServiceDescription();
+            sd.setType(service);
+            sd.setName(getLocalName());
+            sds.add(sd);
+        }
+
+        register(sds);
     }
 
     protected AID getService( String service ) {

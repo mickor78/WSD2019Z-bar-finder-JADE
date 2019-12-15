@@ -103,10 +103,8 @@ public class BarAgent extends BarFinderAgent {
             doDelete();
         } else {
             // Register agent
-            ServiceDescription sd = new ServiceDescription();
-            sd.setType(BAR_AGENT);
-            sd.setName(getLocalName());
-            register(sd);
+            String[] services = {BAR_AGENT, BAR_AGENT + "_" + bar.getRegion()};
+            registerToService(services);
 
             // Register language and ontology
             getContentManager().registerLanguage(codec);
@@ -127,10 +125,12 @@ public class BarAgent extends BarFinderAgent {
     }
 
     public List<AID> getNearbyBars() {
-        //TODO: localization based
-        //tmp
-        List<AID> bars = new ArrayList<>(Arrays.asList(this.searchDF(BAR_AGENT)));
+        // get bars from the same region
+        List<AID> bars = new ArrayList<>(Arrays.asList(this.searchDF(BAR_AGENT + "_" + bar.getRegion())));
         bars.remove(this.getAID());
+        // TODO: limit number of bars, do it better
+        if(bars.isEmpty())
+            return bars;
         Collections.shuffle(bars);
         int barsToReturn = bars.size() / 2 + 1;
         return bars.subList(0, barsToReturn);

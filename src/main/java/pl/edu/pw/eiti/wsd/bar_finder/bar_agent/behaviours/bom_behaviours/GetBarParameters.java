@@ -37,13 +37,13 @@ public class GetBarParameters extends TickerBehaviour {
         ACLMessage loudnessQuery = new ACLMessage(ACLMessage.QUERY_REF);
         loudnessQuery.addReceiver(getAgent().getLoudnessControllerAgentAID());
         ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - sends query to %s.",
-                myAgent.getLocalName(), getAgent().getSeatsControllerAgentAID().getLocalName()));
+                myAgent.getLocalName(), getAgent().getLoudnessControllerAgentAID().getLocalName()));
         myAgent.send(loudnessQuery);
 
         ACLMessage resourcesQuery = new ACLMessage(ACLMessage.QUERY_REF);
         resourcesQuery.addReceiver(getAgent().getResourcesControllerAgentAID());
         ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOM) - sends query to %s.",
-                myAgent.getLocalName(), getAgent().getSeatsControllerAgentAID().getLocalName()));
+                myAgent.getLocalName(), getAgent().getResourcesControllerAgentAID().getLocalName()));
         myAgent.send(resourcesQuery);
     }
 

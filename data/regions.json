@@ -1,0 +1,76 @@
+{
+  "regions": [
+    {
+      "name": "MOKOTOW",
+      "localization": "52.190671;21.038433"
+    },
+    {
+      "name": "PRAGA_POLUDNIE",
+      "localization": "52.238396;21.084318"
+    },
+    {
+      "name": "URSYNOW",
+      "localization": "52.136166;21.027781"
+    },
+    {
+      "name": "WOLA",
+      "localization": "52.238748;20.961091"
+    },
+    {
+      "name": "BIELANY",
+      "localization": "52.291560;20.931141"
+    },
+    {
+      "name": "TARGOWEK",
+      "localization": "52.284082;21.065894"
+    },
+    {
+      "name": "BEMOWO",
+      "localization": "52.245930;20.909761"
+    },
+    {
+      "name": "SRODMIESCIE",
+      "localization": "52.235600;21.017044"
+    },
+    {
+      "name": "BIALOLEKA",
+      "localization": "52.333258;20.996509"
+    },
+    {
+      "name": "OCHOTA",
+      "localization": "52.209534;20.974170"
+    },
+    {
+      "name": "WAWER",
+      "localization": "52.193364;21.167290"
+    },
+    {
+      "name": "PRAGA_POLNOC",
+      "localization": "52.267074;21.022902"
+    },
+    {
+      "name": "URSUS",
+      "localization": "52.197120;20.880121"
+    },
+    {
+      "name": "ZOLIBORZ",
+      "localization": "52.270625;20.984558"
+    },
+    {
+      "name": "WLOCHY",
+      "localization": "52.184061;20.944718"
+    },
+    {
+      "name": "WILANOW",
+      "localization": "52.151063;21.106988"
+    },
+    {
+      "name": "WESOLA",
+      "localization": "52.229503;21.227585"
+    },
+    {
+      "name": "REMBERTOW",
+      "localization": "52.262246;21.149805"
+    }
+  ]
+}

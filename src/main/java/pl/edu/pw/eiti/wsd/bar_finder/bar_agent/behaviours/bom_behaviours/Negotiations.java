@@ -62,7 +62,7 @@ public class Negotiations extends Behaviour {
                 break;
             case GET_PROPOSAL_ANSWER:
                 ACLMessage response = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
-                    MessageTemplate.MatchReceiver(new AID[] {competitor})));
+                    MessageTemplate.MatchSender(competitor)));
                 if (response != null) {
                     int performative = response.getPerformative();
                     if (performative == ACLMessage.ACCEPT_PROPOSAL) {

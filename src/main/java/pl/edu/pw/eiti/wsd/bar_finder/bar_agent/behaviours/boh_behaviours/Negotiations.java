@@ -33,7 +33,7 @@ public class Negotiations extends Behaviour {
         switch (step) {
             case GET_PROPOSAL_AND_COMPARE:
                 response = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
-                    MessageTemplate.MatchReceiver(new AID[] {competitor})));
+                    MessageTemplate.MatchSender(competitor)));
                 if (response != null) {
                    int performative = response.getPerformative();
                    if (performative == ACLMessage.PROPOSE) {
@@ -89,7 +89,7 @@ public class Negotiations extends Behaviour {
                 break;
             case GET_CONFIRM:
                 response = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
-                    MessageTemplate.MatchReceiver(new AID[] {competitor})));
+                    MessageTemplate.MatchSender(competitor)));
                 if (response != null) {
                     int performative = response.getPerformative();
                     if (isWin) {
