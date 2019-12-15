@@ -342,9 +342,9 @@
       "seats_controller": true
     },
     {
-      "name": "Beerhub",
-      "localization": "52.229806;20.915586",
-      "region": "BEMOWO",
+      "name": "Bar2",
+      "localization": "52.143121;21.051676",
+      "region": "URSYNOW",
       "beers": [
         {
           "name": "Ogrodnik",
