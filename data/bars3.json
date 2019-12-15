@@ -1,0 +1,383 @@
+{
+  "bars": [
+    {
+      "name": "Jabberwocky",
+      "localization": "52.229876;21.015919",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Miękkie lądowanie",
+          "brewery": "Nook",
+          "style": "GERMAN_PILSNER",
+          "price": 16.0,
+          "quantity": 30.5
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 10.0
+        }
+      ],
+      "seats_number": 30,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Kufle_i_kapsle",
+      "localization": "52.229304;21.014750",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Piwiarnia Warki",
+      "localization": "52.224591;21.013905",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 17.0,
+          "quantity": 39.5
+        },
+        {
+          "name": "Piwo4",
+          "brewery": "Browar2",
+          "style": "VIENNA_LAGER",
+          "price": 12.0,
+          "quantity": 25.4
+        }
+      ],
+      "seats_number": 80,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Cuda na kiju",
+      "localization": "52.231689;21.022372",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Piwo5",
+          "brewery": "Nook",
+          "style": "BOHEMIAN_PILSNER",
+          "price": 16.0,
+          "quantity": 30.5
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 10.0
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Pub Bemol",
+      "localization": "52.250731;20.918327",
+      "region": "BEMOWO",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Piwo4",
+          "brewery": "Browar2",
+          "style": "VIENNA_LAGER",
+          "price": 80.0,
+          "quantity": 17.4
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 1.0
+        }
+      ],
+      "seats_number": 450,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "NaWyki Piwne",
+      "localization": "52.231064;20.902742",
+      "region": "BEMOWO",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 13.0,
+          "quantity": 32.2
+        }
+      ],
+      "seats_number": 10,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Piwodawca",
+      "localization": "52.220839;20.910116",
+      "region": "BEMOWO",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 17.0,
+          "quantity": 39.5
+        },
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        }
+      ],
+      "seats_number": 60,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Beerhub",
+      "localization": "52.229806;20.915586",
+      "region": "BEMOWO",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 10.0
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Pub Szyszka Chmielu",
+      "localization": "52.140025;21.059231",
+      "region": "URSYNOW",
+      "beers": [
+        {
+          "name": "Piwo6",
+          "brewery": "Browar1",
+          "style": "AMERICAN_BROWN_ALE",
+          "price": 24.0,
+          "quantity": 5.5
+        },
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 1.0
+        }
+      ],
+      "seats_number": 120,
+      "loudness_controller": false,
+      "seats_controller": true
+    },
+    {
+      "name": "Beczka",
+      "localization": "52.134588;21.063560",
+      "region": "URSYNOW",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.5,
+          "quantity": 10.5
+        },
+        {
+          "name": "Piwo7",
+          "brewery": "Browar1",
+          "style": "ENGLISH_IPA",
+          "price": 25.0,
+          "quantity": 325.8
+        }
+      ],
+      "seats_number": 130,
+      "loudness_controller": true,
+      "seats_controller": false
+    },
+    {
+      "name": "Bar1",
+      "localization": "52.148693;21.050555",
+      "region": "URSYNOW",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 4.0,
+          "quantity": 36.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 11.0,
+          "quantity": 39.5
+        },
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.3,
+          "quantity": 130.5
+        }
+      ],
+      "seats_number": 60,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Beerhub",
+      "localization": "52.229806;20.915586",
+      "region": "BEMOWO",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.9,
+          "quantity": 14.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 15.0,
+          "quantity": 3.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 37.0,
+          "quantity": 89.5
+        },
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 19.0,
+          "quantity": 14.5
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": false,
+      "seats_controller": false
+    }
+  ]
+}
