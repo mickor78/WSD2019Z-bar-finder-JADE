@@ -56,25 +56,19 @@ public class NegotiationsSendResponse extends Behaviour {
                         MessageTemplate.MatchSender(competitor)));
                 if (response != null) {
                     int performative = response.getPerformative();
-                    if (isWin) {
-                        if (performative == ACLMessage.INFORM) {
-                            String content = response.getContent();
-                            if (content.equals("Done")) {
-                                ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH, conversationId: %s) - receives negotiations end confirmation " +
-                                        " from %s.", myAgent.getLocalName(), conversationId, response.getSender().getLocalName()));
-                                getBOH().getDefeatedCompetitors().add(competitor);
-                                step = NegotiationsSteps.DONE;
-                            }
-                            else {
-                                // TODO: Not understood
-                            }
+                    if (performative == ACLMessage.INFORM) {
+                        String content = response.getContent();
+                        if (content.equals("Done")) {
+                            ConsolePrintingMsgUtils.PrintMsg(String.format("%s (BOH, conversationId: %s) - receives negotiations end confirmation " +
+                                    " from %s.", myAgent.getLocalName(), conversationId, response.getSender().getLocalName()));
+                            step = NegotiationsSteps.DONE;
                         }
                         else {
                             // TODO: Not understood
                         }
                     }
-                    else  {
-                        step = NegotiationsSteps.DONE;
+                    else {
+                        // TODO: Not understood
                     }
                 }
                 else {

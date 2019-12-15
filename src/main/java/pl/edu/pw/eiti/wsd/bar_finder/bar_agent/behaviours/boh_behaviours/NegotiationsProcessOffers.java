@@ -27,6 +27,7 @@ public class NegotiationsProcessOffers extends OneShotBehaviour {
                 ParallelBehaviour responsesBehaviour = new ParallelBehaviour(ParallelBehaviour.WHEN_ALL);
                 responsesBehaviour.addSubBehaviour(new NegotiationsSendResponse(winnersConversationId, winnersAID, true));
                 for(Map.Entry<String, AID> loser : getBOH().getCompetitors().entrySet()){
+                    getBOH().getDefeatedCompetitors().add(loser.getValue());
                     responsesBehaviour.addSubBehaviour(new NegotiationsSendResponse(loser.getKey(), loser.getValue(), false));
                 }
                 getBOH().addSubBehaviour(responsesBehaviour);

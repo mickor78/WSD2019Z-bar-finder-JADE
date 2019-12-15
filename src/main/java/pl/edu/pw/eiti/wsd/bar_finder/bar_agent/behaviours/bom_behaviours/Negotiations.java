@@ -78,6 +78,7 @@ public class Negotiations extends Behaviour {
                                     BestOfferHolder boh = new BestOfferHolder(customerId, customerPreferences, score);
                                     if (defeatedCompetitors != null && defeatedCompetitors.size() > 0)
                                         boh.getDefeatedCompetitors().addAll(defeatedCompetitors);
+                                    boh.getDefeatedCompetitors().add(competitor);
                                     myAgent.addBehaviour(boh);
                                     ConsolePrintingMsgUtils.PrintMsg(String.format(
                                         "%s (BOM, conversationId: %s) - sends negotiations end confirmation to %s.",
