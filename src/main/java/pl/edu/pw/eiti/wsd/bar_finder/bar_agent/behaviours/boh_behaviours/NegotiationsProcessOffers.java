@@ -15,23 +15,23 @@ public class NegotiationsProcessOffers extends OneShotBehaviour {
     public void action() {
         try{
             Double bestCompetitorScore = Collections.max(getBOH().getCompetitorsScores().keySet());
+            ParallelBehaviour responsesBehaviour = new ParallelBehaviour(ParallelBehaviour.WHEN_ALL);
             if(getBOH().getScore() > bestCompetitorScore){
                 // BOH didn't lose
                 getBOH().addSubBehaviour(new ProvideBestOffer());
             } else {
-                // winner
+                // Winner
                 String winnersConversationId = getBOH().getCompetitorsScores().get(bestCompetitorScore);
                 AID winnersAID = getBOH().getCompetitors().get(winnersConversationId);
-                // losers list
                 getBOH().getCompetitors().remove(winnersConversationId);
-                ParallelBehaviour responsesBehaviour = new ParallelBehaviour(ParallelBehaviour.WHEN_ALL);
                 responsesBehaviour.addSubBehaviour(new NegotiationsSendResponse(winnersConversationId, winnersAID, true));
-                for(Map.Entry<String, AID> loser : getBOH().getCompetitors().entrySet()){
-                    getBOH().getDefeatedCompetitors().add(loser.getValue());
-                    responsesBehaviour.addSubBehaviour(new NegotiationsSendResponse(loser.getKey(), loser.getValue(), false));
-                }
-                getBOH().addSubBehaviour(responsesBehaviour);
             }
+            // Losers list
+            for(Map.Entry<String, AID> loser : getBOH().getCompetitors().entrySet()){
+                getBOH().getDefeatedCompetitors().add(loser.getValue());
+                responsesBehaviour.addSubBehaviour(new NegotiationsSendResponse(loser.getKey(), loser.getValue(), false));
+            }
+            getBOH().addSubBehaviour(responsesBehaviour);
         } catch (NoSuchElementException e){
             // Competitors scores list is empty, send own offer
             getBOH().addSubBehaviour(new ProvideBestOffer());
