@@ -5,13 +5,13 @@
       "preferences": [
         {
           "name": "localization",
-          "value": "52.231689;21.022372",
-          "importance": 0.1
+          "value": "52.229876;21.015919",
+          "importance": 0.01
         },
         {
-          "name": "beer_style",
-          "value": "OKTOBERFEST",
-          "importance": 0.9
+          "name": "beer",
+          "value": "Slow & Trve",
+          "importance": 0.8
         }
       ]
     }
