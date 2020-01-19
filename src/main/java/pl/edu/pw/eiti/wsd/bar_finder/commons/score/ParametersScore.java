@@ -142,6 +142,7 @@ public final class ParametersScore {
                                     break;
                             }
                     }
+                    break;
                 case BAR_FREE_SEATS_PARAM_NAME:
                     if(offer.getFreeSeats() != null) {
                         int freeSeats = offer.getFreeSeats();

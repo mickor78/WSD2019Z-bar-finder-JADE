@@ -1,0 +1,24 @@
+{
+  "customers_preferences": [
+    {
+      "customer": "Jan_Krafciarz1",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.229876;21.015919",
+          "importance": 0.0
+        },
+        {
+          "name": "beer",
+          "value": "Slow & Trve",
+          "importance": 0.1
+        },
+        {
+          "name": "beer_style",
+          "value": "VIENNA_LAGER",
+          "importance": 0.9
+        }
+      ]
+    }
+  ]
+}

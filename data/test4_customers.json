@@ -1,0 +1,19 @@
+{
+  "customers_preferences": [
+    {
+      "customer": "Jan_Krafciarz1",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.229876;21.015919",
+          "importance": 0.01
+        },
+        {
+          "name": "beer",
+          "value": "Slow & Trve",
+          "importance": 0.8
+        }
+      ]
+    }
+  ]
+}
