@@ -1,0 +1,34 @@
+{
+  "customers_preferences": [
+    {
+      "customer": "Jan_Krafciarz1",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.231689;21.022372",
+          "importance": 0.9
+        },
+        {
+          "name": "beer_style",
+          "value": "VIENNA_LAGER",
+          "importance": 0.1
+        }
+      ]
+    },
+    {
+      "customer": "Jan_Krafciarz2",
+      "preferences": [
+        {
+          "name": "localization",
+          "value": "52.231689;21.022372",
+          "importance": 0.1
+        },
+        {
+          "name": "beer_style",
+          "value": "VIENNA_LAGER",
+          "importance": 0.9
+        }
+      ]
+    }
+  ]
+}

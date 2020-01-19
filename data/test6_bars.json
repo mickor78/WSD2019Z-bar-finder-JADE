@@ -1,0 +1,128 @@
+{
+  "bars": [
+    {
+      "name": "Jabberwocky",
+      "localization": "52.229876;21.015919",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Miękkie lądowanie",
+          "brewery": "Nook",
+          "style": "GERMAN_PILSNER",
+          "price": 16.0,
+          "quantity": 11.8
+        },
+        {
+          "name": "Slow & Trve",
+          "brewery": "Zagovor Brewery",
+          "style": "ENGLISH_IPA",
+          "price": 30.0,
+          "quantity": 12.0
+        }
+      ],
+      "seats_number": 30,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Kufle_i_kapsle",
+      "localization": "52.229304;21.014750",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Piwiarnia Warki",
+      "localization": "52.224591;21.013905",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Ogrodnik",
+          "brewery": "Profesja",
+          "style": "SAISON",
+          "price": 15.0,
+          "quantity": 10.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        },
+        {
+          "name": "Piwo3",
+          "brewery": "Profesja",
+          "style": "MUNICH_DUNKEL",
+          "price": 17.0,
+          "quantity": 39.5
+        },
+        {
+          "name": "Piwo4",
+          "brewery": "Browar2",
+          "style": "VIENNA_LAGER",
+          "price": 12.0,
+          "quantity": 25.4
+        }
+      ],
+      "seats_number": 80,
+      "loudness_controller": true,
+      "seats_controller": true
+    },
+    {
+      "name": "Cuda na kiju",
+      "localization": "52.231689;21.022372",
+      "region": "SRODMIESCIE",
+      "beers": [
+        {
+          "name": "Aparat",
+          "brewery": "Jabberwocky",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 50.5
+        },
+        {
+          "name": "Piwo5",
+          "brewery": "Nook",
+          "style": "BOHEMIAN_PILSNER",
+          "price": 16.0,
+          "quantity": 30.5
+        },
+        {
+          "name": "Bard",
+          "brewery": "Profesja",
+          "style": "AMERICAN_PALE_ALE",
+          "price": 14.0,
+          "quantity": 36.5
+        }
+      ],
+      "seats_number": 50,
+      "loudness_controller": true,
+      "seats_controller": true
+    }
+  ]
+}
